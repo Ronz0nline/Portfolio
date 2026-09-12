@@ -8,6 +8,7 @@ import { initMobileMenu } from './ui/mobileMenu.js';
 import { initSignatureIntro } from './ui/signatureIntro.js';
 import { initAeroBackground } from './ui/aeroBackground.js';
 import { initGlowCursor } from './ui/glowCursor.js';
+import { initBlurText, triggerBlurText } from './ui/blurText.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   // Set current year dynamically
@@ -19,6 +20,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Initialise interactive glow cursor (React Bits inspired)
   initGlowCursor();
+
+  // Initialise blur text effect (React Bits inspired)
+  initBlurText();
 
   // Initialise the Three.js engine immediately — it renders silently
   // behind the signature intro overlay.
@@ -32,6 +36,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Only starts AFTER the intro has been dismissed — this prevents
   // GSAP ScrollTrigger from reacting to any scroll position during intro.
   initScrollTimeline(threeEngine);
+
+  // Trigger blur text reveal for Chapter 00 headline
+  triggerBlurText();
 
   // ── Secondary UI ────────────────────────────────────────────────────
   initMobileMenu();

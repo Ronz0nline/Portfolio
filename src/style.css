@@ -519,4 +519,30 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   background: rgba(183, 101, 69, 0.25);
 }
 
+/* ═══════════════════════════════════════════════════════════════════
+   BLUR TEXT ANIMATION (React Bits Inspired)
+   ═══════════════════════════════════════════════════════════════════ */
+
+.blur-text-container {
+  display: inline-block;
+  overflow: visible;
+}
+
+.blur-text-word {
+  display: inline-block;
+  white-space: nowrap;
+  vertical-align: baseline;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blur-text-word {
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
+  }
+}
+
+
 
