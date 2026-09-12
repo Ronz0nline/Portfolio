@@ -103,7 +103,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   inset: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 0;
+  z-index: 1;
   pointer-events: none;
   overflow: hidden;
 }
@@ -310,4 +310,213 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
     margin-top: 1.5rem;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════════
+   AERO BACKGROUND SHADES (Ambient Mesh & Glass Lighting)
+   ═══════════════════════════════════════════════════════════════════ */
+
+#aero-background {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  contain: strict;
+  transform: translate3d(var(--aero-parallax-x, 0px), var(--aero-parallax-y, 0px), 0);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.aero-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(85px);
+  -webkit-filter: blur(85px);
+  will-change: transform, opacity;
+  opacity: 0.36;
+  pointer-events: none;
+}
+
+/* Orb 1: Warm Clay Glow (Top Right to Center) */
+.aero-orb-1 {
+  width: min(65vw, 650px);
+  height: min(65vw, 650px);
+  top: -10%;
+  right: -5%;
+  background: radial-gradient(circle at center, rgba(183, 101, 69, 0.45) 0%, rgba(183, 101, 69, 0.15) 50%, transparent 75%);
+  animation: aero-drift-1 26s ease-in-out infinite alternate;
+}
+
+/* Orb 2: Deep Terracotta (Mid Left) */
+.aero-orb-2 {
+  width: min(70vw, 700px);
+  height: min(70vw, 700px);
+  top: 35%;
+  left: -12%;
+  background: radial-gradient(circle at center, rgba(127, 70, 54, 0.42) 0%, rgba(127, 70, 54, 0.12) 55%, transparent 80%);
+  animation: aero-drift-2 32s ease-in-out infinite alternate;
+}
+
+/* Orb 3: Calligraphic Antique Gold (Bottom Center to Right) */
+.aero-orb-3 {
+  width: min(60vw, 580px);
+  height: min(60vw, 580px);
+  bottom: -8%;
+  right: 15%;
+  background: radial-gradient(circle at center, rgba(200, 168, 130, 0.35) 0%, rgba(200, 168, 130, 0.10) 50%, transparent 75%);
+  animation: aero-drift-3 24s ease-in-out infinite alternate;
+}
+
+/* Orb 4: Grounding Ambient Umber */
+.aero-orb-4 {
+  width: min(50vw, 500px);
+  height: min(50vw, 500px);
+  top: 60%;
+  left: 30%;
+  background: radial-gradient(circle at center, rgba(155, 75, 45, 0.25) 0%, rgba(17, 17, 15, 0.6) 60%, transparent 80%);
+  animation: aero-drift-4 28s ease-in-out infinite alternate;
+}
+
+@keyframes aero-drift-1 {
+  0%   { transform: translate3d(0, 0, 0) scale(1) rotate(0deg); }
+  50%  { transform: translate3d(-10%, 12%, 0) scale(1.12) rotate(45deg); }
+  100% { transform: translate3d(8%, -6%, 0) scale(0.92) rotate(90deg); }
+}
+
+@keyframes aero-drift-2 {
+  0%   { transform: translate3d(0, 0, 0) scale(1) rotate(0deg); }
+  50%  { transform: translate3d(15%, -8%, 0) scale(1.15) rotate(-35deg); }
+  100% { transform: translate3d(-5%, 10%, 0) scale(0.95) rotate(-70deg); }
+}
+
+@keyframes aero-drift-3 {
+  0%   { transform: translate3d(0, 0, 0) scale(1) rotate(0deg); }
+  50%  { transform: translate3d(-12%, -10%, 0) scale(1.08) rotate(30deg); }
+  100% { transform: translate3d(6%, 8%, 0) scale(0.96) rotate(60deg); }
+}
+
+@keyframes aero-drift-4 {
+  0%   { transform: translate3d(0, 0, 0) scale(0.95); }
+  50%  { transform: translate3d(8%, -15%, 0) scale(1.18); }
+  100% { transform: translate3d(-10%, 5%, 0) scale(1.02); }
+}
+
+#aero-background.reduced-motion .aero-orb {
+  animation: none !important;
+  opacity: 0.28;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   GLOW CURSOR (React Bits Inspired)
+   ═══════════════════════════════════════════════════════════════════ */
+
+.glow-cursor-root {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.glow-cursor-root.is-visible {
+  opacity: 1;
+}
+
+/* Ambient Radial Glow Halo (Spotlight across surfaces) */
+.glow-cursor-halo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 340px;
+  height: 340px;
+  margin-top: -170px;
+  margin-left: -170px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at center,
+    rgba(183, 101, 69, 0.24) 0%,
+    rgba(200, 168, 130, 0.12) 30%,
+    rgba(127, 70, 54, 0.05) 55%,
+    transparent 72%
+  );
+  filter: blur(10px);
+  will-change: transform, opacity;
+  transition: width 0.35s ease, height 0.35s ease, margin 0.35s ease, opacity 0.35s ease;
+}
+
+/* Smooth Lagging Focus Ring */
+.glow-cursor-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 28px;
+  height: 28px;
+  margin-top: -14px;
+  margin-left: -14px;
+  border-radius: 50%;
+  border: 1px solid rgba(200, 168, 130, 0.45);
+  background: rgba(183, 101, 69, 0.04);
+  pointer-events: none;
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+  will-change: transform;
+  transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              height 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              margin 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s ease,
+              background-color 0.25s ease;
+}
+
+/* Precision Center Dot */
+.glow-cursor-dot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  margin-top: -2.5px;
+  margin-left: -2.5px;
+  border-radius: 50%;
+  background: #C8A882;
+  box-shadow: 0 0 8px rgba(200, 168, 130, 0.85);
+  pointer-events: none;
+  will-change: transform;
+  transition: transform 0.08s ease-out, background-color 0.2s ease;
+}
+
+/* Hover State: Interactive expansion over links, buttons & triggers */
+.glow-cursor-root.is-hovered .glow-cursor-ring {
+  width: 48px;
+  height: 48px;
+  margin-top: -24px;
+  margin-left: -24px;
+  border-color: rgba(200, 168, 130, 0.85);
+  background: rgba(183, 101, 69, 0.14);
+  box-shadow: 0 0 16px rgba(183, 101, 69, 0.25);
+}
+
+.glow-cursor-root.is-hovered .glow-cursor-dot {
+  background: #E8E3D9;
+  transform: scale(0.65);
+}
+
+.glow-cursor-root.is-hovered .glow-cursor-halo {
+  width: 420px;
+  height: 420px;
+  margin-top: -210px;
+  margin-left: -210px;
+  opacity: 1.25;
+}
+
+/* Pressed State: Squeeze spring on click */
+.glow-cursor-root.is-pressed .glow-cursor-ring {
+  transform: scale(0.85) !important;
+  border-color: #B76545;
+  background: rgba(183, 101, 69, 0.25);
+}
+
 

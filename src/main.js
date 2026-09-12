@@ -6,11 +6,19 @@ import { initRagDemo } from './ui/ragDemo.js';
 import { initContactForm } from './ui/contactForm.js';
 import { initMobileMenu } from './ui/mobileMenu.js';
 import { initSignatureIntro } from './ui/signatureIntro.js';
+import { initAeroBackground } from './ui/aeroBackground.js';
+import { initGlowCursor } from './ui/glowCursor.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   // Set current year dynamically
   const yearEl = document.getElementById('footer-year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  // Initialise ambient aero background shades
+  initAeroBackground();
+
+  // Initialise interactive glow cursor (React Bits inspired)
+  initGlowCursor();
 
   // Initialise the Three.js engine immediately — it renders silently
   // behind the signature intro overlay.
