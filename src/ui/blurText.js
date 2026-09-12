@@ -95,12 +95,16 @@ export function initBlurText(selector = '[data-blur-text]', options = {}) {
       tl.play();
     }
   });
+
+  // Refresh ScrollTrigger after DOM text wrapping
+  ScrollTrigger.refresh();
 }
 
-export function triggerBlurText(selector = '[data-blur-text]') {
+export function triggerBlurText(selector = '#ch00 [data-blur-text]') {
   document.querySelectorAll(selector).forEach(el => {
     if (el.__playBlurAnimation) {
       el.__playBlurAnimation();
     }
   });
 }
+
