@@ -9,6 +9,8 @@ import { initSignatureIntro } from './ui/signatureIntro.js';
 import { initAeroBackground } from './ui/aeroBackground.js';
 import { initGlowCursor } from './ui/glowCursor.js';
 import { initBlurText, triggerBlurText } from './ui/blurText.js';
+import { initBorderGlow } from './ui/borderGlow.js';
+import { initClickSparkle } from './ui/clickSparkle.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   // Set current year dynamically
@@ -20,6 +22,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Initialise interactive glow cursor (React Bits inspired)
   initGlowCursor();
+
+  // Initialise click sparkle effect (React Bits inspired)
+  initClickSparkle();
+
+  // Initialise card spotlight border glow (React Bits inspired)
+  initBorderGlow();
 
   // Initialise blur text effect (React Bits inspired)
   initBlurText();

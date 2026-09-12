@@ -544,5 +544,68 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   }
 }
 
+/* ═══════════════════════════════════════════════════════════════════
+   BORDER GLOW (React Bits Spotlight Card)
+   ═══════════════════════════════════════════════════════════════════ */
+
+.border-glow-card {
+  position: relative;
+  isolation: isolate;
+}
+
+/* 1px dynamic border spotlight */
+.border-glow-card::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: radial-gradient(
+    300px circle at var(--mouse-x, -999px) var(--mouse-y, -999px),
+    rgba(200, 168, 130, 0.75) 0%,
+    rgba(183, 101, 69, 0.45) 35%,
+    rgba(127, 70, 54, 0.15) 55%,
+    transparent 72%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Ambient surface spotlight illuminating card interior */
+.border-glow-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    340px circle at var(--mouse-x, -999px) var(--mouse-y, -999px),
+    rgba(183, 101, 69, 0.08) 0%,
+    rgba(200, 168, 130, 0.04) 40%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.border-glow-card:hover::before,
+.border-glow-card:hover::after {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .border-glow-card::before,
+  .border-glow-card::after {
+    display: none !important;
+  }
+}
+
+
 
 
