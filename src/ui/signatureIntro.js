@@ -387,31 +387,6 @@ export class SignatureIntro {
     const grain = el('div', { id: 'sig-grain', 'aria-hidden': 'true' });
     this.overlay.appendChild(grain);
 
-    this._soundPill = el('button', {
-      id:          'sig-sound-pill',
-      'aria-label':'Toggle authentic pen writing sound',
-      class:       'sig-sound-pill blocked',
-    });
-    this._soundPill.innerHTML = `
-      <span class="sig-sound-icon">🔈</span>
-      <span class="sig-sound-label">Tap for sound</span>
-    `;
-    this._soundPill.addEventListener('click', async (e) => {
-      e.stopPropagation();
-      if (this.audio.isBlocked) {
-        await this.audio.unlock();
-        if (this.tl && this.tl.isActive()) {
-          const currentTime = this.tl.time();
-          this.audio.playAt(currentTime);
-        } else {
-          this.replay();
-        }
-      } else {
-        this.audio.toggleMute();
-      }
-    });
-    this.overlay.appendChild(this._soundPill);
-
     const sigWrap = el('div', { id: 'sig-wrap', 'aria-hidden': 'true' });
     this.svgEl = this._buildSVG();
     sigWrap.appendChild(this.svgEl);
@@ -705,7 +680,7 @@ export class SignatureIntro {
     });
 
     // Phase 1: UI fades
-    tl.to(['#sig-subtitle', '#sig-prompt', '#sig-sound-pill'], {
+    tl.to(['#sig-subtitle', '#sig-prompt'], {
       opacity: 0, duration: 0.35, ease: 'power2.in',
     }, 0);
 
