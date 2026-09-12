@@ -19,9 +19,9 @@ export function initRagDemo(threeEngine) {
 
     // Visual feedback
     ragOutput.innerHTML = `
-      <div class="flex items-center gap-2 text-stone text-xs font-mono">
-        <span class="inline-block w-2 h-2 rounded-full bg-clay animate-ping"></span>
-        <span>PROJECTING QUERY TO HIGH-DIMENSIONAL EMBEDDING SPACE...</span>
+      <div class="flex items-center gap-2 text-stone text-xs font-sans">
+        <span class="inline-block w-2 h-2 rounded-full bg-clay animate-pulse"></span>
+        <span>Searching embedding index...</span>
       </div>
     `;
 
@@ -58,17 +58,17 @@ export function initRagDemo(threeEngine) {
       }
 
       ragOutput.innerHTML = `
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-[11px] font-mono text-clay hairline-b pb-2">
-          <span class="font-medium text-clay">[SIMILARITY: ${bestChunk.dynamicScore}] ${bestChunk.title}</span>
-          <span class="text-stone">LATENCY: ${bestChunk.latency} // HNSW GRAPH</span>
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-xs hairline-b pb-2 font-sans">
+          <span class="font-medium text-clay"><span class="font-mono text-[11px]">${bestChunk.dynamicScore}</span> · ${bestChunk.title}</span>
+          <span class="text-stone text-[11px] font-mono">${bestChunk.latency} · HNSW</span>
         </div>
-        <p class="text-on-surface font-sans text-xs sm:text-sm font-light leading-relaxed pt-1">
+        <p class="text-on-surface font-sans text-xs sm:text-sm font-normal leading-relaxed pt-1">
           "${bestChunk.excerpt}"
         </p>
-        <div class="flex items-center gap-4 text-[10px] font-mono text-stone pt-2">
-          <span>DISTANCE METRIC: COSINE</span>
-          <span>EMBEDDING DIM: 1536D</span>
-          <span>GROUNDED: VERIFIED</span>
+        <div class="flex items-center gap-4 text-[11px] font-mono text-stone/80 pt-2">
+          <span>metric: cosine</span>
+          <span>dim: 1536d</span>
+          <span>grounded: verified</span>
         </div>
       `;
     }, 280);

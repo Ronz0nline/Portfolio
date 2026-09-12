@@ -22,8 +22,8 @@ export class ThreeEngine {
 
   initScene() {
     this.scene = new THREE.Scene();
-    // Deep pitch black space fog
-    this.scene.fog = new THREE.FogExp2(0x000000, 0.026);
+    // Deep charcoal atmospheric fog
+    this.scene.fog = new THREE.FogExp2(0x11110f, 0.026);
 
     const width = this.container.clientWidth || window.innerWidth;
     const height = this.container.clientHeight || window.innerHeight;

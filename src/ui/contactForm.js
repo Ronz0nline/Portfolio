@@ -21,22 +21,22 @@ export function initContactForm() {
 
     submitBtn.disabled = true;
     submitBtn.innerHTML = `
-      <span class="inline-block animate-pulse">TRANSMITTING SIGNAL...</span>
+      <span class="inline-block animate-pulse">Sending inquiry...</span>
     `;
 
     setTimeout(() => {
       submitBtn.disabled = false;
-      submitBtn.innerHTML = `Signal Transmitted ✓`;
+      submitBtn.innerHTML = `Inquiry sent ✓`;
       submitBtn.classList.add('bg-stone', 'cursor-default');
 
       feedback.classList.remove('hidden');
       feedback.innerHTML = `
         <div class="flex items-start gap-3">
-          <span class="text-clay font-bold text-sm">✓</span>
+          <span class="text-clay font-medium text-sm">✓</span>
           <div class="space-y-1">
-            <div class="font-medium text-on-surface">Transmission Acknowledged</div>
-            <p class="text-stone text-[11px] leading-relaxed font-sans">
-              Thank you, ${name}. Your message regarding "${topic}" has been logged. Rohan will review and reply to ${email}.
+            <div class="font-medium text-on-surface font-sans text-sm">Inquiry received</div>
+            <p class="text-stone text-xs leading-relaxed font-sans font-light">
+              Thank you, ${name}. Your note regarding "${topic}" has been received. I will review and reply to ${email}.
             </p>
           </div>
         </div>

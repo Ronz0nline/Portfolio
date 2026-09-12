@@ -8,12 +8,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "#000000",
-        surface: "#000000",
-        "surface-low": "#080808",
-        "surface-card": "#0c0b0a",
-        "surface-container": "#121110",
-        "surface-border": "rgba(232, 227, 217, 0.09)",
+        background: "#11110F",
+        surface: "#11110F",
+        "surface-low": "#161513",
+        "surface-card": "#1c1b18",
+        "surface-container": "#24221E",
+        "surface-border": "rgba(232, 227, 217, 0.12)",
         "on-surface": "#E8E3D9",
         "on-surface-muted": "#8D887E",
         clay: "#B76545",
@@ -22,9 +22,9 @@ export default {
         stone: "#8D887E",
       },
       fontFamily: {
-        sans: ["Geist", "Inter", "sans-serif"],
-        serif: ["Newsreader", "Georgia", "serif"],
-        mono: ["Space Mono", "JetBrains Mono", "monospace"],
+        sans: ["'DM Sans'", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
+        serif: ["'Instrument Serif'", "Georgia", "serif"],
+        mono: ["'IBM Plex Mono'", "monospace"],
       }
     },
   },

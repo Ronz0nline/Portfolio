@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
   <title>Rohan Rakshe — Computer Science × Intelligent Systems</title>
   <meta name="description" content="Experimental digital portfolio and systems architecture narrative by Rohan Rakshe, Computer Science developer based in Pune, India." />
-  <meta name="theme-color" content="#000000" />
+  <meta name="theme-color" content="#11110F" />
 
-  <!-- Typography: Newsreader (Editorial Serif), Geist/Inter (Clean UI Sans), Space Mono (Telemetry Monospace) -->
+  <!-- Typography: DM Sans (Primary Sans), Instrument Serif (Editorial Serif), IBM Plex Mono (Technical Font) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400;1,9..40,500&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
 </head>
 <body class="bg-background text-on-surface antialiased min-h-screen relative selection:bg-clay selection:text-background font-sans">
 
@@ -29,32 +29,32 @@
   <div id="grain-overlay" aria-hidden="true"></div>
 
   <!-- Responsive Navigation Header (hidden at origin, revealed on scroll) -->
-  <header id="main-nav-header" class="fixed top-0 left-0 right-0 z-50 px-5 md:px-14 py-4 flex items-center justify-between backdrop-blur-md bg-black/85 hairline-b opacity-0 pointer-events-none transition-all duration-300">
+  <header id="main-nav-header" class="fixed top-0 left-0 right-0 z-50 px-5 md:px-14 py-4 flex items-center justify-between backdrop-blur-md bg-[#11110F]/80 hairline-b opacity-0 pointer-events-none transition-all duration-300">
 
     <!-- Wordmark -->
     <div class="flex items-center gap-3">
       <a href="#ch00" class="group flex items-baseline gap-2 text-on-surface hover:text-clay transition-colors duration-200" aria-label="Rohan Rakshe Portfolio Home">
         <span class="font-medium tracking-tight text-sm">Rohan Rakshe</span>
-        <span class="text-xs font-mono text-on-surface-muted hidden sm:inline">— Systems &amp; AI</span>
+        <span class="text-xs font-sans text-on-surface-muted hidden sm:inline">— Systems &amp; AI</span>
       </a>
     </div>
 
     <!-- Desktop: Chapter Telemetry HUD (centred) -->
-    <div class="hidden md:flex items-center gap-3 font-mono text-xs text-on-surface-muted" aria-live="polite">
-      <span id="hud-chapter-id" class="text-clay">00</span>
+    <div class="hidden md:flex items-center gap-2.5 text-xs text-on-surface-muted" aria-live="polite">
+      <span id="hud-chapter-id" class="text-clay font-mono">00</span>
       <span class="text-stone/40">/</span>
-      <span id="hud-chapter-title" class="uppercase tracking-widest text-[11px] text-on-surface">Origin</span>
+      <span id="hud-chapter-title" class="text-xs font-sans text-on-surface">Origin</span>
     </div>
 
     <!-- Desktop: Inline Nav Links -->
-    <nav class="hidden md:flex items-center gap-6 text-xs font-mono tracking-wide text-on-surface-muted" aria-label="Main Navigation">
+    <nav class="hidden md:flex items-center gap-6 text-xs font-sans text-on-surface-muted" aria-label="Main Navigation">
       <a href="#ch04" class="hover:text-on-surface transition-colors py-1">About</a>
       <a href="#ch05" class="hover:text-on-surface transition-colors py-1">Disciplines</a>
       <a href="#ch07" class="hover:text-on-surface transition-colors py-1">Works</a>
       <a href="#ch10" class="hover:text-on-surface transition-colors py-1">Trajectory</a>
       <a href="#ch12" class="text-on-surface hover:text-clay transition-colors flex items-center gap-1 group">
         <span>Contact</span>
-        <span class="text-[10px] group-hover:translate-x-0.5 transition-transform duration-200">→</span>
+        <span class="text-xs group-hover:translate-x-0.5 transition-transform duration-200">→</span>
       </a>
     </nav>
 
@@ -81,18 +81,18 @@
     <!-- Backdrop -->
     <div
       id="mobile-menu-backdrop"
-      class="absolute inset-0 bg-black/70 backdrop-blur-sm opacity-0 transition-opacity duration-300"
+      class="absolute inset-0 bg-[#11110F]/60 backdrop-blur-sm opacity-0 transition-opacity duration-300"
     ></div>
 
     <!-- Drawer Panel -->
     <nav
       id="mobile-menu-panel"
-      class="absolute top-0 right-0 h-full w-[min(80vw,280px)] bg-[#0a0a0a] hairline-l flex flex-col translate-x-full transition-transform duration-300 ease-out"
+      class="absolute top-0 right-0 h-full w-[min(80vw,280px)] bg-[#161513] hairline-l flex flex-col translate-x-full transition-transform duration-300 ease-out"
       aria-label="Mobile Navigation"
     >
       <!-- Drawer header -->
       <div class="flex items-center justify-between px-6 py-5 hairline-b">
-        <span class="font-mono text-xs text-on-surface-muted uppercase tracking-widest">Navigate</span>
+        <span class="font-sans text-xs text-on-surface-muted">Navigate</span>
         <button
           id="mobile-menu-close"
           class="flex items-center justify-center w-7 h-7 text-on-surface-muted hover:text-clay transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-clay rounded-sm"
@@ -106,10 +106,10 @@
       </div>
 
       <!-- Chapter HUD (mobile only) -->
-      <div class="flex items-center gap-2 px-6 pt-5 pb-3 font-mono text-xs text-on-surface-muted">
-        <span class="text-clay" id="hud-chapter-id-mobile">00</span>
+      <div class="flex items-center gap-2 px-6 pt-5 pb-3 text-xs text-on-surface-muted">
+        <span class="text-clay font-mono" id="hud-chapter-id-mobile">00</span>
         <span class="text-stone/40">/</span>
-        <span class="uppercase tracking-widest text-[10px] text-on-surface" id="hud-chapter-title-mobile">Origin</span>
+        <span class="text-xs font-sans text-on-surface" id="hud-chapter-title-mobile">Origin</span>
       </div>
 
       <!-- Nav Links -->
@@ -117,38 +117,38 @@
         <li>
           <a href="#ch04" class="mobile-nav-link group flex items-center justify-between py-4 hairline-b text-on-surface-muted hover:text-on-surface transition-colors duration-200 text-sm font-sans">
             <span>About</span>
-            <span class="font-mono text-[10px] text-clay group-hover:translate-x-0.5 transition-transform duration-200">→</span>
+            <span class="text-xs text-clay group-hover:translate-x-0.5 transition-transform duration-200">→</span>
           </a>
         </li>
         <li>
           <a href="#ch05" class="mobile-nav-link group flex items-center justify-between py-4 hairline-b text-on-surface-muted hover:text-on-surface transition-colors duration-200 text-sm font-sans">
             <span>Disciplines</span>
-            <span class="font-mono text-[10px] text-clay group-hover:translate-x-0.5 transition-transform duration-200">→</span>
+            <span class="text-xs text-clay group-hover:translate-x-0.5 transition-transform duration-200">→</span>
           </a>
         </li>
         <li>
           <a href="#ch07" class="mobile-nav-link group flex items-center justify-between py-4 hairline-b text-on-surface-muted hover:text-on-surface transition-colors duration-200 text-sm font-sans">
             <span>Works</span>
-            <span class="font-mono text-[10px] text-clay group-hover:translate-x-0.5 transition-transform duration-200">→</span>
+            <span class="text-xs text-clay group-hover:translate-x-0.5 transition-transform duration-200">→</span>
           </a>
         </li>
         <li>
           <a href="#ch10" class="mobile-nav-link group flex items-center justify-between py-4 hairline-b text-on-surface-muted hover:text-on-surface transition-colors duration-200 text-sm font-sans">
             <span>Trajectory</span>
-            <span class="font-mono text-[10px] text-clay group-hover:translate-x-0.5 transition-transform duration-200">→</span>
+            <span class="text-xs text-clay group-hover:translate-x-0.5 transition-transform duration-200">→</span>
           </a>
         </li>
         <li>
           <a href="#ch12" class="mobile-nav-link group flex items-center justify-between py-4 text-on-surface hover:text-clay transition-colors duration-200 text-sm font-sans">
             <span>Contact</span>
-            <span class="font-mono text-[10px] group-hover:translate-x-0.5 transition-transform duration-200">→</span>
+            <span class="text-xs group-hover:translate-x-0.5 transition-transform duration-200">→</span>
           </a>
         </li>
       </ul>
 
       <!-- Footer contact nudge -->
       <div class="mt-auto px-6 pb-8 pt-6 hairline-t">
-        <p class="font-mono text-[10px] text-stone uppercase tracking-widest mb-2">Professional Network</p>
+        <p class="font-sans text-xs text-stone mb-2">Professional Network</p>
         <a href="https://www.linkedin.com/in/rohan-rakshe" target="_blank" rel="noopener noreferrer" class="font-sans text-xs text-on-surface-muted hover:text-clay transition-colors duration-200 break-all flex items-center justify-between">
           <span>linkedin.com/in/rohan-rakshe</span>
           <span class="text-xs text-clay">↗</span>
@@ -182,15 +182,15 @@
     <!-- CHAPTER 00 — VOID -->
     <section id="ch00" data-chapter="0" data-title="Origin" class="min-h-screen w-full flex flex-col justify-center items-center px-6 text-center relative">
       <div class="max-w-2xl mx-auto flex flex-col items-center gap-8 reveal-on-scroll">
-        <span class="text-xs font-mono tracking-widest text-on-surface-muted uppercase">00 / State of Potential</span>
-        <h1 class="font-serif italic text-4xl sm:text-6xl md:text-7xl font-light tracking-tight text-on-surface leading-tight" data-blur-text>
+        <span class="text-xs font-sans text-stone">Chapter 00 · Origin</span>
+        <h1 class="font-serif italic text-4xl sm:text-6xl md:text-7xl font-normal text-on-surface leading-[1.15]" data-blur-text>
           Everything begins as a possibility.
         </h1>
-        <p class="font-sans text-sm sm:text-base text-on-surface-muted max-w-md leading-relaxed font-light">
+        <p class="font-sans text-base sm:text-lg text-on-surface-muted max-w-md leading-relaxed font-normal">
           Before algorithms, weights, and silicon substrates. A quiet void poised for structural emergence.
         </p>
-        <div class="pt-8 flex flex-col items-center gap-2 font-mono text-[11px] text-stone">
-          <span class="tracking-widest uppercase">Scroll to begin</span>
+        <div class="pt-8 flex flex-col items-center gap-2 font-sans text-xs text-stone">
+          <span>Scroll to begin</span>
           <span class="text-clay animate-bounce">↓</span>
         </div>
       </div>
@@ -199,31 +199,32 @@
     <!-- CHAPTER 01 — EMERGENCE -->
     <section id="ch01" data-chapter="1" data-title="Emergence" class="min-h-screen w-full flex items-center justify-center px-6 md:px-20 py-24">
       <div class="max-w-4xl w-full flex flex-col gap-12 reveal-on-scroll">
-        <div class="flex items-center gap-4 text-xs font-mono text-on-surface-muted hairline-b pb-4">
-          <span class="text-clay">01 / Emergence</span>
-          <span class="text-stone/40">|</span>
-          <span>From Signal to Substance</span>
+        <div class="flex items-center gap-3 text-xs font-sans text-on-surface-muted hairline-b pb-4">
+          <span class="font-serif text-lg text-on-surface">Emergence</span>
+          <span class="text-stone/40">/</span>
+          <span class="text-stone">From signal to substance</span>
+          <span class="text-stone/40 font-mono ml-auto">01</span>
         </div>
         <div class="space-y-6 max-w-3xl">
-          <h2 class="font-serif italic text-3xl sm:text-5xl font-light text-on-surface leading-tight" data-blur-text>
+          <h2 class="font-serif italic text-3xl sm:text-5xl font-normal text-on-surface leading-[1.2]" data-blur-text>
             Structure creates meaning.
           </h2>
-          <p class="text-base sm:text-lg text-on-surface-muted leading-relaxed font-light">
+          <p class="text-base sm:text-lg text-on-surface-muted leading-relaxed font-normal">
             A single electrical impulse cascades into a waveform. Sampled over discrete time steps, waveform becomes tensor coordinates. And coordinates establish spatial coherence.
           </p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 hairline-t">
           <div class="py-4 flex flex-col gap-2">
-            <span class="font-mono text-xs text-clay uppercase">01. Ingestion</span>
-            <p class="text-xs text-on-surface-muted leading-relaxed font-light">Continuous edge measurements captured through low-overhead sensor pipelines.</p>
+            <span class="font-sans text-xs text-clay font-medium">01 · Ingestion</span>
+            <p class="text-xs text-on-surface-muted leading-relaxed font-normal">Continuous edge measurements captured through low-overhead sensor pipelines.</p>
           </div>
           <div class="py-4 flex flex-col gap-2">
-            <span class="font-mono text-xs text-terracotta uppercase">02. Quantization</span>
-            <p class="text-xs text-on-surface-muted leading-relaxed font-light">Disciplined float precision optimization for deterministic execution on local hardware.</p>
+            <span class="font-sans text-xs text-terracotta font-medium">02 · Quantization</span>
+            <p class="text-xs text-on-surface-muted leading-relaxed font-normal">Disciplined float precision optimization for deterministic execution on local hardware.</p>
           </div>
           <div class="py-4 flex flex-col gap-2">
-            <span class="font-mono text-xs text-on-surface uppercase">03. Synthesis</span>
-            <p class="text-xs text-on-surface-muted leading-relaxed font-light">Geometric clustering in multidimensional latent space, revealing semantic structure.</p>
+            <span class="font-sans text-xs text-on-surface font-medium">03 · Synthesis</span>
+            <p class="text-xs text-on-surface-muted leading-relaxed font-normal">Geometric clustering in multidimensional latent space, revealing semantic structure.</p>
           </div>
         </div>
       </div>
@@ -232,44 +233,45 @@
     <!-- CHAPTER 02 — INFORMATION / COORDINATES -->
     <section id="ch02" data-chapter="2" data-title="Coordinates" class="min-h-screen w-full flex items-center justify-center px-6 md:px-20 py-24">
       <div class="max-w-5xl w-full flex flex-col gap-12 reveal-on-scroll">
-        <div class="flex items-center justify-between text-xs font-mono text-on-surface-muted hairline-b pb-4">
+        <div class="flex items-center justify-between text-xs font-sans text-on-surface-muted hairline-b pb-4">
           <div class="flex items-center gap-3">
-            <span class="text-clay">02 / Manifolds</span>
-            <span class="text-stone/40">|</span>
-            <span>Mathematical Grounding</span>
+            <span class="font-serif text-lg text-on-surface">Coordinates</span>
+            <span class="text-stone/40">/</span>
+            <span class="text-stone">Mathematical grounding</span>
+            <span class="text-stone/40 font-mono">02</span>
           </div>
-          <span class="text-[11px] text-stone font-mono hidden sm:inline">Rank 2nd // Tech Setu Inter-College Stats</span>
+          <span class="text-xs text-stone font-sans hidden sm:inline">Rank 2nd · Tech Setu Statistics</span>
         </div>
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           <div class="lg:col-span-6 flex flex-col gap-6">
-            <h2 class="font-sans text-2xl sm:text-3xl font-medium tracking-tight text-on-surface" data-blur-text>
+            <h2 class="font-serif italic text-2xl sm:text-4xl font-normal text-on-surface leading-[1.25]" data-blur-text>
               Coordinates define distance. Distance defines meaning.
             </h2>
-            <p class="text-sm sm:text-base text-on-surface-muted font-light leading-relaxed">
+            <p class="text-sm sm:text-base text-on-surface-muted font-normal leading-relaxed">
               Information is noise until structured along geometric axes. In mathematical embeddings, proximity is semantic similarity: concepts align, intersect, and differentiate across calibrated hyperplanes.
             </p>
-            <div class="border-glow-card p-5 rounded border hairline-border bg-surface-low/80 flex flex-col gap-3 font-mono text-xs">
-              <div class="text-clay uppercase tracking-wider text-[11px]">Vector Geometry Baseline</div>
-              <div class="flex justify-between py-1 hairline-b text-stone">
+            <div class="border-glow-card p-5 rounded border hairline-border bg-surface-low/80 flex flex-col gap-3 text-xs">
+              <div class="text-clay text-xs font-sans font-medium">Vector geometry baseline</div>
+              <div class="flex justify-between py-1 hairline-b text-stone font-sans">
                 <span>Dimensional Space</span>
-                <span class="text-on-surface">1536d / Dense Manifold</span>
+                <span class="text-on-surface font-mono">1536d / Dense Manifold</span>
               </div>
-              <div class="flex justify-between py-1 hairline-b text-stone">
+              <div class="flex justify-between py-1 hairline-b text-stone font-sans">
                 <span>Metric Formulation</span>
-                <span class="text-on-surface">Cosine: 1 - (u · v) / (||u|| ||v||)</span>
+                <span class="text-on-surface font-mono">Cosine: 1 - (u · v) / (||u|| ||v||)</span>
               </div>
-              <div class="flex justify-between py-1 text-stone">
+              <div class="flex justify-between py-1 text-stone font-sans">
                 <span>Graph Index</span>
-                <span class="text-on-surface">HNSW Proximity Graph</span>
+                <span class="text-on-surface font-mono">HNSW Proximity Graph</span>
               </div>
             </div>
           </div>
-          <div class="border-glow-card lg:col-span-6 p-6 rounded border hairline-border bg-surface-card/70 backdrop-blur-sm flex flex-col gap-4 font-mono text-xs">
-            <div class="flex items-center justify-between text-stone text-[11px]">
-              <span>SCHEMATIC // ATTENTION MANIFOLD</span>
-              <span class="text-clay">EXECUTION</span>
+          <div class="border-glow-card lg:col-span-6 p-6 rounded border hairline-border bg-surface-card/70 backdrop-blur-sm flex flex-col gap-4 text-xs">
+            <div class="flex items-center justify-between text-stone text-xs font-sans">
+              <span>Attention manifold formulation</span>
+              <span class="text-clay font-sans text-xs font-medium">Formulation</span>
             </div>
-            <pre class="text-stone text-[11px] leading-relaxed p-4 rounded bg-surface-container overflow-x-auto border hairline-border">// Linear projection &amp; attention formulation
+            <pre class="text-stone text-[11px] leading-relaxed p-4 rounded bg-surface-container overflow-x-auto border hairline-border font-mono">// Linear projection &amp; attention formulation
 Q = W_q · X + b_q   // Query space
 K = W_k · X + b_k   // Key mapping
 V = W_v · X + b_v   // Value matrix
@@ -278,7 +280,7 @@ A = Softmax( (Q · Kᵀ) / √d_k ) · V
 Latent Cluster Norm: 0.9984
 Entropy Residual: 0.042 nats
 Topology status: Orthogonal convergence</pre>
-            <p class="text-[11px] text-stone font-sans italic font-light">
+            <p class="text-xs text-stone font-sans italic font-normal">
               Rigorous mathematical training bridging linear algebra with machine learning architectures.
             </p>
           </div>
@@ -289,34 +291,35 @@ Topology status: Orthogonal convergence</pre>
     <!-- CHAPTER 03 — INTELLIGENCE -->
     <section id="ch03" data-chapter="3" data-title="Form" class="min-h-screen w-full flex items-center justify-center px-6 md:px-20 py-24">
       <div class="max-w-5xl w-full flex flex-col gap-12 reveal-on-scroll">
-        <div class="flex items-center gap-4 text-xs font-mono text-on-surface-muted hairline-b pb-4">
-          <span class="text-clay">03 / Form</span>
-          <span class="text-stone/40">|</span>
-          <span>Disciplined Reasoning</span>
+        <div class="flex items-center gap-3 text-xs font-sans text-on-surface-muted hairline-b pb-4">
+          <span class="font-serif text-lg text-on-surface">Form</span>
+          <span class="text-stone/40">/</span>
+          <span class="text-stone">Disciplined reasoning</span>
+          <span class="text-stone/40 font-mono ml-auto">03</span>
         </div>
         <div class="max-w-3xl space-y-4">
-          <h2 class="font-serif italic text-3xl sm:text-5xl font-light text-on-surface leading-tight" data-blur-text>
+          <h2 class="font-serif italic text-3xl sm:text-5xl font-normal text-on-surface leading-[1.2]" data-blur-text>
             Intelligence is structure calibrated by reality.
           </h2>
-          <p class="text-sm sm:text-base text-on-surface-muted font-light leading-relaxed">
+          <p class="text-base sm:text-lg text-on-surface-muted font-normal leading-relaxed">
             Neural networks are neither inscrutable black boxes nor decorative artifice. They are disciplined matrices of calibrated weights, constantly adjusting to reflect empirical boundaries.
           </p>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pt-4">
           <div class="border-glow-card p-6 border hairline-border rounded bg-surface-low/70 flex flex-col gap-3">
-            <span class="font-mono text-xs text-clay">01 / ML Core</span>
-            <h3 class="font-medium text-base text-on-surface">Statistical Learning</h3>
-            <p class="text-xs text-on-surface-muted leading-relaxed font-light">Supervised optimization, regression boundaries, loss surfaces, and latent parameter evaluation.</p>
+            <span class="font-sans text-xs text-clay font-medium">01 · Machine Learning</span>
+            <h3 class="font-medium text-base text-on-surface font-sans">Statistical Learning</h3>
+            <p class="text-xs text-on-surface-muted leading-relaxed font-normal">Supervised optimization, regression boundaries, loss surfaces, and latent parameter evaluation.</p>
           </div>
           <div class="border-glow-card p-6 border hairline-border rounded bg-surface-low/70 flex flex-col gap-3">
-            <span class="font-mono text-xs text-terracotta">02 / Spatial Vision</span>
-            <h3 class="font-medium text-base text-on-surface">Computer Vision</h3>
-            <p class="text-xs text-on-surface-muted leading-relaxed font-light">Pixel array filtering, boundary extraction, OpenCV morphological transformations, feature alignment.</p>
+            <span class="font-sans text-xs text-terracotta font-medium">02 · Spatial Vision</span>
+            <h3 class="font-medium text-base text-on-surface font-sans">Computer Vision</h3>
+            <p class="text-xs text-on-surface-muted leading-relaxed font-normal">Pixel array filtering, boundary extraction, OpenCV morphological transformations, feature alignment.</p>
           </div>
           <div class="border-glow-card p-6 border hairline-border rounded bg-surface-low/70 flex flex-col gap-3">
-            <span class="font-mono text-xs text-on-surface">03 / Systems</span>
-            <h3 class="font-medium text-base text-on-surface">Embedded Logic</h3>
-            <p class="text-xs text-on-surface-muted leading-relaxed font-light">BLE protocol negotiations, hardware signal thresholding, offline-first local database architectures.</p>
+            <span class="font-sans text-xs text-on-surface font-medium">03 · Systems</span>
+            <h3 class="font-medium text-base text-on-surface font-sans">Embedded Logic</h3>
+            <p class="text-xs text-on-surface-muted leading-relaxed font-normal">BLE protocol negotiations, hardware signal thresholding, offline-first local database architectures.</p>
           </div>
         </div>
       </div>
@@ -326,37 +329,38 @@ Topology status: Orthogonal convergence</pre>
     <section id="ch04" data-chapter="4" data-title="Identity" class="min-h-screen w-full flex items-center justify-center px-6 md:px-20 py-24">
       <div class="max-w-5xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center reveal-on-scroll">
         <div class="lg:col-span-7 flex flex-col gap-6">
-          <div class="flex items-center gap-3 text-xs font-mono text-on-surface-muted hairline-b pb-3">
-            <span class="text-clay">04 / Identity</span>
-            <span class="text-stone/40">|</span>
-            <span>Architect Console</span>
+          <div class="flex items-center gap-3 text-xs font-sans text-on-surface-muted hairline-b pb-3">
+            <span class="font-serif text-lg text-on-surface">Identity</span>
+            <span class="text-stone/40">/</span>
+            <span class="text-stone">Profile &amp; background</span>
+            <span class="text-stone/40 font-mono ml-auto">04</span>
           </div>
           <div class="space-y-3">
             <h2 class="font-sans text-4xl sm:text-6xl font-medium tracking-tight text-on-surface" data-blur-text>
               Rohan Rakshe
             </h2>
-            <p class="font-serif italic text-xl sm:text-2xl text-stone">
+            <p class="font-serif italic text-xl sm:text-2xl text-stone font-normal">
               "Building intelligent systems from algorithms, data and computation."
             </p>
           </div>
-          <p class="text-sm sm:text-base text-on-surface-muted font-light leading-relaxed">
+          <p class="text-sm sm:text-base text-on-surface-muted font-normal leading-relaxed">
             Computer science student and software architect based in Pune, India. Bridging rigorous mathematical foundations with native mobile engineering and generative artificial intelligence. Focused on resilient, deterministic software that calculates truth at the boundary of hardware and cloud.
           </p>
-          <div class="flex flex-wrap gap-3 pt-2 font-mono text-xs text-stone">
-            <span class="px-3 py-1.5 border hairline-border rounded bg-surface-container/60">BBA (CA) // MMCC Pune</span>
+          <div class="flex flex-wrap gap-2.5 pt-2 font-sans text-xs text-stone">
+            <span class="px-3 py-1.5 border hairline-border rounded bg-surface-container/60">BBA (CA) · MMCC Pune</span>
             <span class="px-3 py-1.5 border hairline-border rounded bg-surface-container/60">Kotlin &amp; C++</span>
-            <span class="px-3 py-1.5 border hairline-border rounded bg-surface-container/60">Python / PyTorch</span>
+            <span class="px-3 py-1.5 border hairline-border rounded bg-surface-container/60">Python · PyTorch</span>
             <span class="px-3 py-1.5 border hairline-border rounded bg-surface-container/60">BLE &amp; Edge Systems</span>
           </div>
         </div>
         <div class="lg:col-span-5 flex flex-col gap-4">
           <!-- Curated Architectural Document Card -->
           <div class="border-glow-card p-6 border hairline-border rounded-lg bg-surface-card/80 backdrop-blur flex flex-col gap-4">
-            <div class="flex items-center justify-between text-xs font-mono text-stone hairline-b pb-3">
-              <span>ARCHIVE // PROFILE METADATA</span>
-              <span class="text-clay font-medium">VERIFIED</span>
+            <div class="flex items-center justify-between text-xs font-sans text-stone hairline-b pb-3">
+              <span>Profile information</span>
+              <span class="text-clay font-medium font-sans">Verified</span>
             </div>
-            <div class="space-y-2 text-xs font-mono text-stone">
+            <div class="space-y-2 text-xs font-sans text-stone">
               <div class="flex justify-between py-1 border-b border-white/5">
                 <span>Location</span>
                 <span class="text-on-surface">Pune, Maharashtra, India</span>
@@ -367,18 +371,18 @@ Topology status: Orthogonal convergence</pre>
               </div>
               <div class="flex justify-between py-1 border-b border-white/5">
                 <span>Primary Focus</span>
-                <span class="text-on-surface font-sans">Edge Systems &amp; AI</span>
+                <span class="text-on-surface">Edge Systems &amp; AI</span>
               </div>
               <div class="flex justify-between py-1">
                 <span>Direct Channel</span>
-                <a href="https://www.linkedin.com/in/rohan-rakshe" target="_blank" rel="noopener noreferrer" class="text-clay hover:underline font-mono flex items-center gap-1">
+                <a href="https://www.linkedin.com/in/rohan-rakshe" target="_blank" rel="noopener noreferrer" class="text-clay hover:underline flex items-center gap-1">
                   <span>LinkedIn Profile</span>
                   <span>↗</span>
                 </a>
               </div>
             </div>
-            <div class="flex items-center justify-between pt-3 hairline-t text-xs font-mono">
-              <span class="text-on-surface font-sans font-medium">Curriculum Vitae</span>
+            <div class="flex items-center justify-between pt-3 hairline-t text-xs font-sans">
+              <span class="text-on-surface font-medium">Curriculum Vitae</span>
               <a href="https://www.linkedin.com/in/rohan-rakshe" target="_blank" rel="noopener noreferrer" class="text-clay hover:underline flex items-center gap-1">
                 <span>Connect on LinkedIn</span>
                 <span>↗</span>
@@ -392,78 +396,79 @@ Topology status: Orthogonal convergence</pre>
     <!-- CHAPTER 05 — DISCIPLINES MATRIX -->
     <section id="ch05" data-chapter="5" data-title="Disciplines" class="min-h-screen w-full flex items-center justify-center px-6 md:px-20 py-24">
       <div class="max-w-5xl w-full flex flex-col gap-12 reveal-on-scroll">
-        <div class="flex items-center justify-between text-xs font-mono text-on-surface-muted hairline-b pb-4">
+        <div class="flex items-center justify-between text-xs font-sans text-on-surface-muted hairline-b pb-4">
           <div class="flex items-center gap-3">
-            <span class="text-clay">05 / Disciplines</span>
-            <span class="text-stone/40">|</span>
-            <span>Architectural Capabilities</span>
+            <span class="font-serif text-lg text-on-surface">Disciplines</span>
+            <span class="text-stone/40">/</span>
+            <span class="text-stone">Architectural capabilities</span>
+            <span class="text-stone/40 font-mono">05</span>
           </div>
-          <span class="text-stone hidden sm:inline">6 Core Domains (Hover card to query 3D node)</span>
+          <span class="text-stone font-sans text-xs hidden sm:inline">6 core domains</span>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <!-- 1. AI & ML -->
           <div class="discipline-interactive-card border-glow-card p-6 border hairline-border rounded bg-surface-low/80 hover:border-clay/60 transition-all flex flex-col justify-between gap-6 cursor-pointer" data-discipline-id="0" tabindex="0">
             <div class="space-y-3">
-              <span class="font-mono text-xs text-clay">[01]</span>
+              <span class="font-mono text-xs text-clay">01</span>
               <h3 class="font-sans text-lg font-medium text-on-surface">Machine Learning &amp; AI</h3>
-              <p class="text-xs text-on-surface-muted font-light leading-relaxed">Formulating regression diagnostics, stochastic gradient descents, parameter tuning, and LLM reasoning pipelines.</p>
+              <p class="text-xs text-on-surface-muted font-normal leading-relaxed">Formulating regression diagnostics, stochastic gradient descents, parameter tuning, and LLM reasoning pipelines.</p>
             </div>
-            <div class="font-mono text-[11px] text-stone flex flex-wrap gap-2 pt-2 hairline-t">
+            <div class="font-sans text-xs text-stone flex flex-wrap gap-2 pt-2 hairline-t">
               <span>Python</span> · <span>PyTorch</span> · <span>Scikit</span> · <span>Gemini API</span>
             </div>
           </div>
           <!-- 2. Computer Vision -->
           <div class="discipline-interactive-card border-glow-card p-6 border hairline-border rounded bg-surface-low/80 hover:border-clay/60 transition-all flex flex-col justify-between gap-6 cursor-pointer" data-discipline-id="1" tabindex="0">
             <div class="space-y-3">
-              <span class="font-mono text-xs text-terracotta">[02]</span>
+              <span class="font-mono text-xs text-terracotta">02</span>
               <h3 class="font-sans text-lg font-medium text-on-surface">Computer Vision</h3>
-              <p class="text-xs text-on-surface-muted font-light leading-relaxed">Discrete pixel operations, edge extraction kernel masks, facial landmark tracking, and real-time video transformation.</p>
+              <p class="text-xs text-on-surface-muted font-normal leading-relaxed">Discrete pixel operations, edge extraction kernel masks, facial landmark tracking, and real-time video transformation.</p>
             </div>
-            <div class="font-mono text-[11px] text-stone flex flex-wrap gap-2 pt-2 hairline-t">
+            <div class="font-sans text-xs text-stone flex flex-wrap gap-2 pt-2 hairline-t">
               <span>OpenCV</span> · <span>NumPy</span> · <span>Spatial Tracking</span>
             </div>
           </div>
           <!-- 3. Systems Engineering -->
           <div class="discipline-interactive-card border-glow-card p-6 border hairline-border rounded bg-surface-low/80 hover:border-clay/60 transition-all flex flex-col justify-between gap-6 cursor-pointer" data-discipline-id="2" tabindex="0">
             <div class="space-y-3">
-              <span class="font-mono text-xs text-clay">[03]</span>
+              <span class="font-mono text-xs text-clay">03</span>
               <h3 class="font-sans text-lg font-medium text-on-surface">Native Systems</h3>
-              <p class="text-xs text-on-surface-muted font-light leading-relaxed">Native Android Kotlin architectures, BLE protocol packet negotiation, deterministic concurrency, and Room SQLite caching.</p>
+              <p class="text-xs text-on-surface-muted font-normal leading-relaxed">Native Android Kotlin architectures, BLE protocol packet negotiation, deterministic concurrency, and Room SQLite caching.</p>
             </div>
-            <div class="font-mono text-[11px] text-stone flex flex-wrap gap-2 pt-2 hairline-t">
+            <div class="font-sans text-xs text-stone flex flex-wrap gap-2 pt-2 hairline-t">
               <span>C++</span> · <span>Kotlin</span> · <span>Compose</span> · <span>BLE</span>
             </div>
           </div>
           <!-- 4. Web Architectures -->
           <div class="discipline-interactive-card border-glow-card p-6 border hairline-border rounded bg-surface-low/80 hover:border-clay/60 transition-all flex flex-col justify-between gap-6 cursor-pointer" data-discipline-id="3" tabindex="0">
             <div class="space-y-3">
-              <span class="font-mono text-xs text-stone">[04]</span>
+              <span class="font-mono text-xs text-stone">04</span>
               <h3 class="font-sans text-lg font-medium text-on-surface">Web Engineering</h3>
-              <p class="text-xs text-on-surface-muted font-light leading-relaxed">Performance-oriented responsive web platforms, clean CSS composition, asynchronous streams, and dynamic data visualization.</p>
+              <p class="text-xs text-on-surface-muted font-normal leading-relaxed">Performance-oriented responsive web platforms, clean CSS composition, asynchronous streams, and dynamic data visualization.</p>
             </div>
-            <div class="font-mono text-[11px] text-stone flex flex-wrap gap-2 pt-2 hairline-t">
+            <div class="font-sans text-xs text-stone flex flex-wrap gap-2 pt-2 hairline-t">
               <span>HTML5</span> · <span>Modern CSS</span> · <span>ES6+</span> · <span>WebGL</span>
             </div>
           </div>
           <!-- 5. RAG & Retrieval -->
           <div class="discipline-interactive-card border-glow-card p-6 border hairline-border rounded bg-surface-low/80 hover:border-clay/60 transition-all flex flex-col justify-between gap-6 cursor-pointer" data-discipline-id="4" tabindex="0">
             <div class="space-y-3">
-              <span class="font-mono text-xs text-clay">[05]</span>
+              <span class="font-mono text-xs text-clay">05</span>
               <h3 class="font-sans text-lg font-medium text-on-surface">Retrieval &amp; Grounding</h3>
-              <p class="text-xs text-on-surface-muted font-light leading-relaxed">Semantic vector embedding, recursive text chunking, hybrid BM25 + dense cosine scoring, and hallucination reduction.</p>
+              <p class="text-xs text-on-surface-muted font-normal leading-relaxed">Semantic vector embedding, recursive text chunking, hybrid BM25 + dense cosine scoring, and hallucination reduction.</p>
             </div>
-            <div class="font-mono text-[11px] text-stone flex flex-wrap gap-2 pt-2 hairline-t">
+            <div class="font-sans text-xs text-stone flex flex-wrap gap-2 pt-2 hairline-t">
               <span>Embeddings</span> · <span>Cosine Metric</span> · <span>HNSW Graph</span>
             </div>
           </div>
           <!-- 6. Quantum Explorations -->
           <div class="discipline-interactive-card border-glow-card p-6 border hairline-border rounded bg-surface-low/80 hover:border-clay/60 transition-all flex flex-col justify-between gap-6 cursor-pointer" data-discipline-id="5" tabindex="0">
             <div class="space-y-3">
-              <span class="font-mono text-xs text-terracotta">[06]</span>
+              <span class="font-mono text-xs text-terracotta">06</span>
               <h3 class="font-sans text-lg font-medium text-on-surface">Quantum Paradigms</h3>
-              <p class="text-xs text-on-surface-muted font-light leading-relaxed">Exploratory mathematical analysis of qubit state vectors, Bloch sphere rotations, and quantum linear algebra primitives.</p>
+              <p class="text-xs text-on-surface-muted font-normal leading-relaxed">Exploratory mathematical analysis of qubit state vectors, Bloch sphere rotations, and quantum linear algebra primitives.</p>
             </div>
-            <div class="font-mono text-[11px] text-stone flex flex-wrap gap-2 pt-2 hairline-t">
+            <div class="font-sans text-xs text-stone flex flex-wrap gap-2 pt-2 hairline-t">
               <span>Qubit States</span> · <span>Complex Matrices</span> · <span>Proofs</span>
             </div>
           </div>
@@ -474,72 +479,73 @@ Topology status: Orthogonal convergence</pre>
     <!-- CHAPTER 06 — HOW I THINK (METHODOLOGY) -->
     <section id="ch06" data-chapter="6" data-title="Logic" class="min-h-screen w-full flex items-center justify-center px-6 md:px-20 py-24">
       <div class="max-w-5xl w-full flex flex-col gap-12 reveal-on-scroll">
-        <div class="flex items-center gap-3 text-xs font-mono text-on-surface-muted hairline-b pb-4">
-          <span class="text-clay">06 / Logic</span>
-          <span class="text-stone/40">|</span>
-          <span>Deterministic Engineering Process</span>
+        <div class="flex items-center gap-3 text-xs font-sans text-on-surface-muted hairline-b pb-4">
+          <span class="font-serif text-lg text-on-surface">Logic</span>
+          <span class="text-stone/40">/</span>
+          <span>Deterministic engineering process</span>
+          <span class="text-stone/40 font-mono ml-auto">06</span>
         </div>
         <div class="space-y-3 max-w-2xl">
-          <h2 class="font-serif italic text-3xl sm:text-4xl font-light text-on-surface" data-blur-text>
+          <h2 class="font-serif italic text-3xl sm:text-5xl font-normal text-on-surface leading-[1.2]" data-blur-text>
             How thoughts become working systems.
           </h2>
-          <p class="text-sm sm:text-base text-on-surface-muted font-light">
+          <p class="text-sm sm:text-base text-on-surface-muted font-normal">
             Applying deterministic engineering discipline to solve non-deterministic real-world challenges.
           </p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-7 gap-3">
           <div class="p-4 border hairline-border rounded bg-surface-low/60 flex flex-col gap-2">
-            <span class="font-mono text-xs text-clay">01 / ISO</span>
-            <div class="font-medium text-sm text-on-surface">Isolate</div>
-            <p class="text-[11px] text-stone font-light leading-normal">Locate true physical and algorithmic constraints.</p>
+            <span class="font-mono text-xs text-clay">01</span>
+            <div class="font-sans font-medium text-sm text-on-surface">Isolate</div>
+            <p class="text-xs text-stone font-normal leading-normal">Locate true physical and algorithmic constraints.</p>
           </div>
           <div class="p-4 border hairline-border rounded bg-surface-low/60 flex flex-col gap-2">
-            <span class="font-mono text-xs text-stone">02 / ACQ</span>
-            <div class="font-medium text-sm text-on-surface">Acquire</div>
-            <p class="text-[11px] text-stone font-light leading-normal">Scrub, normalize, and inspect edge data distributions.</p>
+            <span class="font-mono text-xs text-stone">02</span>
+            <div class="font-sans font-medium text-sm text-on-surface">Acquire</div>
+            <p class="text-xs text-stone font-normal leading-normal">Scrub, normalize, and inspect edge data distributions.</p>
           </div>
           <div class="p-4 border hairline-border rounded bg-surface-low/60 flex flex-col gap-2">
-            <span class="font-mono text-xs text-terracotta">03 / BEN</span>
-            <div class="font-medium text-sm text-on-surface">Benchmark</div>
-            <p class="text-[11px] text-stone font-light leading-normal">Draft targeted proof-of-concept tests and metrics.</p>
+            <span class="font-mono text-xs text-terracotta">03</span>
+            <div class="font-sans font-medium text-sm text-on-surface">Benchmark</div>
+            <p class="text-xs text-stone font-normal leading-normal">Draft targeted proof-of-concept tests and metrics.</p>
           </div>
           <div class="p-4 border hairline-border rounded bg-surface-low/60 flex flex-col gap-2">
-            <span class="font-mono text-xs text-clay">04 / FOR</span>
-            <div class="font-medium text-sm text-on-surface">Formulate</div>
-            <p class="text-[11px] text-stone font-light leading-normal">Establish state boundaries and algorithmic pathways.</p>
+            <span class="font-mono text-xs text-clay">04</span>
+            <div class="font-sans font-medium text-sm text-on-surface">Formulate</div>
+            <p class="text-xs text-stone font-normal leading-normal">Establish state boundaries and algorithmic pathways.</p>
           </div>
           <div class="p-4 border hairline-border rounded bg-surface-low/60 flex flex-col gap-2">
-            <span class="font-mono text-xs text-stone">05 / STR</span>
-            <div class="font-medium text-sm text-on-surface">Streamline</div>
-            <p class="text-[11px] text-stone font-light leading-normal">Prune redundant passes, cache state, reduce cycles.</p>
+            <span class="font-mono text-xs text-stone">05</span>
+            <div class="font-sans font-medium text-sm text-on-surface">Streamline</div>
+            <p class="text-xs text-stone font-normal leading-normal">Prune redundant passes, cache state, reduce cycles.</p>
           </div>
           <div class="p-4 border hairline-border rounded bg-surface-low/60 flex flex-col gap-2">
-            <span class="font-mono text-xs text-terracotta">06 / INT</span>
-            <div class="font-medium text-sm text-on-surface">Integrate</div>
-            <p class="text-[11px] text-stone font-light leading-normal">Build graceful fail-safes and robust background queues.</p>
+            <span class="font-mono text-xs text-terracotta">06</span>
+            <div class="font-sans font-medium text-sm text-on-surface">Integrate</div>
+            <p class="text-xs text-stone font-normal leading-normal">Build graceful fail-safes and robust background queues.</p>
           </div>
           <div class="p-4 border hairline-border rounded bg-surface-low/60 flex flex-col gap-2">
-            <span class="font-mono text-xs text-clay">07 / VER</span>
-            <div class="font-medium text-sm text-on-surface">Verify</div>
-            <p class="text-[11px] text-stone font-light leading-normal">Measure empirical results in adverse offline conditions.</p>
+            <span class="font-mono text-xs text-clay">07</span>
+            <div class="font-sans font-medium text-sm text-on-surface">Verify</div>
+            <p class="text-xs text-stone font-normal leading-normal">Measure empirical results in adverse offline conditions.</p>
           </div>
         </div>
-        <div class="border-glow-card grid grid-cols-2 md:grid-cols-4 gap-6 p-6 border hairline-border rounded bg-surface-card/60 font-mono">
+        <div class="border-glow-card grid grid-cols-2 md:grid-cols-4 gap-6 p-6 border hairline-border rounded bg-surface-card/60">
           <div class="flex flex-col gap-1">
-            <span class="text-[10px] text-stone uppercase tracking-wider">BLE Handshake</span>
-            <span class="font-sans text-2xl font-light text-on-surface">&lt;350ms</span>
+            <span class="text-xs text-stone font-sans">BLE Handshake</span>
+            <span class="font-mono text-2xl font-normal text-on-surface">&lt;350ms</span>
           </div>
           <div class="flex flex-col gap-1">
-            <span class="text-[10px] text-stone uppercase tracking-wider">Hackathon Velocity</span>
-            <span class="font-sans text-2xl font-light text-on-surface">3.0 Hours</span>
+            <span class="text-xs text-stone font-sans">Hackathon Sprint</span>
+            <span class="font-mono text-2xl font-normal text-on-surface">3.0 Hours</span>
           </div>
           <div class="flex flex-col gap-1">
-            <span class="text-[10px] text-stone uppercase tracking-wider">Research Podium</span>
-            <span class="font-sans text-2xl font-light text-clay">1st Place</span>
+            <span class="text-xs text-stone font-sans">Research Podium</span>
+            <span class="font-sans text-2xl font-normal text-clay">1st Place</span>
           </div>
           <div class="flex flex-col gap-1">
-            <span class="text-[10px] text-stone uppercase tracking-wider">Math/Stats Podium</span>
-            <span class="font-sans text-2xl font-light text-terracotta">2nd Place</span>
+            <span class="text-xs text-stone font-sans">Mathematics Podium</span>
+            <span class="font-sans text-2xl font-normal text-terracotta">2nd Place</span>
           </div>
         </div>
       </div>
@@ -548,41 +554,42 @@ Topology status: Orthogonal convergence</pre>
     <!-- CHAPTER 07 — WORK / CASE STUDIES -->
     <section id="ch07" data-chapter="7" data-title="Works" class="min-h-screen w-full flex items-center justify-center px-6 md:px-20 py-24">
       <div class="max-w-5xl w-full flex flex-col gap-16 reveal-on-scroll">
-        <div class="flex items-center justify-between text-xs font-mono text-on-surface-muted hairline-b pb-4">
+        <div class="flex items-center justify-between text-xs font-sans text-on-surface-muted hairline-b pb-4">
           <div class="flex items-center gap-3">
-            <span class="text-clay">07 / Works</span>
-            <span class="text-stone/40">|</span>
-            <span>Architectural Case Studies</span>
+            <span class="font-serif text-lg text-on-surface">Works</span>
+            <span class="text-stone/40">/</span>
+            <span class="text-stone">Selected case studies</span>
+            <span class="text-stone/40 font-mono">07</span>
           </div>
-          <span class="text-stone">Verifiable Production Software</span>
+          <span class="text-stone font-sans text-xs">Production software</span>
         </div>
 
         <!-- CASE STUDY 1: MARKME -->
         <article class="border-glow-card p-8 md:p-10 border hairline-border rounded-lg bg-surface-low/90 backdrop-blur-md flex flex-col gap-8">
           <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 hairline-b pb-4">
             <div>
-              <span class="font-mono text-xs text-clay tracking-wider uppercase">Case Study 01 // Research &amp; Software Award Winner</span>
-              <h3 class="font-sans text-2xl sm:text-3xl font-medium text-on-surface mt-1" data-blur-text>
+              <span class="font-sans text-xs text-clay font-medium">Case Study 01 · Research &amp; Software Award Winner</span>
+              <h3 class="font-serif text-2xl sm:text-3xl font-normal text-on-surface mt-1" data-blur-text>
                 MarkMe — Proximity-Based Smart Attendance System
               </h3>
             </div>
-            <span class="font-mono text-xs text-stone whitespace-nowrap">Offline-First Native Android</span>
+            <span class="font-sans text-xs text-stone whitespace-nowrap">Offline-first native Android</span>
           </div>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-xs font-light">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-xs font-normal">
             <div class="flex flex-col gap-3">
-              <span class="font-mono text-xs text-on-surface font-medium uppercase tracking-wider">The Problem</span>
+              <span class="font-sans text-xs text-on-surface font-medium">The Problem</span>
               <p class="text-on-surface-muted leading-relaxed">
                 Academic institutions lose significant pedagogical time to manual roll-calls and proxy sign-ins. Existing RFID or GPS solutions fail indoors or burden students with friction.
               </p>
             </div>
             <div class="flex flex-col gap-3">
-              <span class="font-mono text-xs text-on-surface font-medium uppercase tracking-wider">The Architecture</span>
+              <span class="font-sans text-xs text-on-surface font-medium">The Architecture</span>
               <p class="text-on-surface-muted leading-relaxed">
                 Built a native Android client leveraging Bluetooth Low Energy (BLE) peripheral beacons. Deployed dynamic rolling UUID cryptographic rotation to eliminate replay attacks, combined with strictly calibrated RSSI signal boundaries (-68 dBm cutoff).
               </p>
             </div>
             <div class="flex flex-col gap-3">
-              <span class="font-mono text-xs text-on-surface font-medium uppercase tracking-wider">The Results</span>
+              <span class="font-sans text-xs text-on-surface font-medium">The Results</span>
               <p class="text-on-surface-muted leading-relaxed">
                 Awarded 1st place in the college research &amp; software development competition. Instantaneous verification under 350ms with reliable offline SQLite Room caching synced opportunistically to Firebase.
               </p>
@@ -591,45 +598,45 @@ Topology status: Orthogonal convergence</pre>
 
           <!-- Abstract Visual Architecture Pipeline Diagram -->
           <div class="p-4 rounded bg-surface-container/60 border hairline-border flex flex-col gap-3">
-            <div class="flex items-center justify-between text-[11px] font-mono text-stone">
-              <span>PIPELINE ARCHITECTURE // CRYPTOGRAPHIC VERIFICATION</span>
-              <span class="text-clay">DETERMINISTIC</span>
+            <div class="flex items-center justify-between text-xs font-sans text-stone">
+              <span>Cryptographic verification pipeline</span>
+              <span class="text-clay font-sans text-xs font-medium">Deterministic flow</span>
             </div>
-            <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 font-mono text-center text-xs">
+            <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 text-center text-xs">
               <div class="p-2.5 rounded bg-surface-low border hairline-border">
-                <div class="text-[10px] text-stone">01</div>
-                <div class="text-on-surface font-medium mt-0.5">BEACON</div>
-                <div class="text-[9px] text-stone/80 mt-1">BLE Peripheral</div>
+                <div class="text-[11px] font-mono text-stone">01</div>
+                <div class="text-on-surface font-sans font-medium mt-0.5">Beacon</div>
+                <div class="text-[11px] text-stone font-sans mt-0.5">BLE Peripheral</div>
               </div>
               <div class="p-2.5 rounded bg-surface-low border hairline-border">
-                <div class="text-[10px] text-clay">02</div>
-                <div class="text-on-surface font-medium mt-0.5">SALT</div>
-                <div class="text-[9px] text-stone/80 mt-1">Time UUID</div>
+                <div class="text-[11px] font-mono text-clay">02</div>
+                <div class="text-on-surface font-sans font-medium mt-0.5">Salt</div>
+                <div class="text-[11px] text-stone font-sans mt-0.5">Time UUID</div>
               </div>
               <div class="p-2.5 rounded bg-surface-low border hairline-border">
-                <div class="text-[10px] text-stone">03</div>
-                <div class="text-on-surface font-medium mt-0.5">RSSI</div>
-                <div class="text-[9px] text-stone/80 mt-1">-68dBm Limit</div>
+                <div class="text-[11px] font-mono text-stone">03</div>
+                <div class="text-on-surface font-sans font-medium mt-0.5">RSSI</div>
+                <div class="text-[11px] text-stone font-sans mt-0.5">-68dBm Cutoff</div>
               </div>
               <div class="p-2.5 rounded bg-surface-low border hairline-border">
-                <div class="text-[10px] text-clay">04</div>
-                <div class="text-on-surface font-medium mt-0.5">ROOM</div>
-                <div class="text-[9px] text-stone/80 mt-1">Local SQLite</div>
+                <div class="text-[11px] font-mono text-clay">04</div>
+                <div class="text-on-surface font-sans font-medium mt-0.5">Room</div>
+                <div class="text-[11px] text-stone font-sans mt-0.5">Local SQLite</div>
               </div>
               <div class="p-2.5 rounded bg-surface-low border hairline-border col-span-2 sm:col-span-1">
-                <div class="text-[10px] text-stone">05</div>
-                <div class="text-on-surface font-medium mt-0.5">SYNC</div>
-                <div class="text-[9px] text-stone/80 mt-1">Firebase Sync</div>
+                <div class="text-[11px] font-mono text-stone">05</div>
+                <div class="text-on-surface font-sans font-medium mt-0.5">Sync</div>
+                <div class="text-[11px] text-stone font-sans mt-0.5">Firebase Cloud</div>
               </div>
             </div>
           </div>
 
-          <div class="p-4 rounded bg-surface-container/70 border hairline-border font-mono text-[11px] text-stone flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div class="p-4 rounded bg-surface-container/70 border hairline-border text-xs text-stone flex flex-col sm:flex-row sm:items-center justify-between gap-3 font-sans">
             <div>
-              <span class="text-on-surface">STACK:</span> Kotlin · Jetpack Compose · Android BLE · Room DB · Firebase
+              <span class="text-on-surface font-medium">Stack:</span> Kotlin · Jetpack Compose · Android BLE · Room DB · Firebase
             </div>
-            <div class="text-clay">
-              METRIC: -68 dBm Cutoff Threshold · Dynamic Rolling Salting
+            <div class="text-clay font-mono text-xs">
+              -68 dBm cutoff threshold · Dynamic rolling salts
             </div>
           </div>
         </article>
@@ -639,54 +646,54 @@ Topology status: Orthogonal convergence</pre>
           <!-- Tesla India Platform -->
           <article class="border-glow-card p-8 border hairline-border rounded-lg bg-surface-low/90 backdrop-blur-md flex flex-col justify-between gap-6">
             <div class="space-y-4">
-              <div class="font-mono text-xs text-terracotta uppercase tracking-wider">Case Study 02 // Web Platform</div>
-              <h3 class="font-sans text-xl font-medium text-on-surface" data-blur-text>
+              <div class="font-sans text-xs text-terracotta font-medium">Case Study 02 · Web Platform</div>
+              <h3 class="font-serif text-xl sm:text-2xl font-normal text-on-surface" data-blur-text>
                 Tesla India Digital Platform
               </h3>
-              <div class="space-y-3 text-xs text-on-surface-muted font-light leading-relaxed">
+              <div class="space-y-3 text-xs text-on-surface-muted font-normal leading-relaxed">
                 <p>
-                  <strong class="font-medium text-on-surface">Context:</strong> Exploring tailored electric mobility specifications adapted for Indian road topology and thermal operating conditions.
+                  <strong class="font-medium text-on-surface font-sans">Context:</strong> Exploring tailored electric mobility specifications adapted for Indian road topology and thermal operating conditions.
                 </p>
                 <p>
-                  <strong class="font-medium text-on-surface">Engineering:</strong> High-performance pure responsive web surface without heavy framework overhead. Includes an interactive real-time specification comparison engine calculating range amortization and battery degradation.
+                  <strong class="font-medium text-on-surface font-sans">Engineering:</strong> High-performance pure responsive web surface without heavy framework overhead. Includes an interactive real-time specification comparison engine calculating range amortization and battery degradation.
                 </p>
               </div>
 
               <!-- Pipeline -->
-              <div class="p-3 rounded bg-surface-container/50 border hairline-border text-[10px] font-mono text-stone space-y-1">
-                <div class="text-clay">MATHEMATICAL ENGINE:</div>
-                <div>SPEC INPUT → AMBIENT FACTOR → BATTERY DECAY → RANGE CURVE</div>
+              <div class="p-3 rounded bg-surface-container/50 border hairline-border text-xs font-sans text-stone space-y-1">
+                <div class="text-clay font-medium">Mathematical engine:</div>
+                <div class="font-mono text-[11px]">Spec input → Ambient factor → Battery decay → Range curve</div>
               </div>
             </div>
-            <div class="font-mono text-[11px] text-stone hairline-t pt-4">
-              <span>STACK: HTML5 · Modern Semantic CSS3 · JavaScript ES6+</span>
+            <div class="font-sans text-xs text-stone hairline-t pt-4">
+              <span>Stack: HTML5 · Modern Semantic CSS3 · JavaScript ES6+</span>
             </div>
           </article>
 
           <!-- Finovexa Budgeting Engine -->
           <article class="border-glow-card p-8 border hairline-border rounded-lg bg-surface-low/90 backdrop-blur-md flex flex-col justify-between gap-6">
             <div class="space-y-4">
-              <div class="font-mono text-xs text-clay uppercase tracking-wider">Case Study 03 // 3-Hour Sprint</div>
-              <h3 class="font-sans text-xl font-medium text-on-surface" data-blur-text>
+              <div class="font-sans text-xs text-clay font-medium">Case Study 03 · 3-Hour Sprint</div>
+              <h3 class="font-serif text-xl sm:text-2xl font-normal text-on-surface" data-blur-text>
                 Finovexa: AI Budgeting Engine
               </h3>
-              <div class="space-y-3 text-xs text-on-surface-muted font-light leading-relaxed">
+              <div class="space-y-3 text-xs text-on-surface-muted font-normal leading-relaxed">
                 <p>
-                  <strong class="font-medium text-on-surface">Context:</strong> Rapid prototype conceived, engineered, and deployed under a strict 3-hour competitive hackathon sprint.
+                  <strong class="font-medium text-on-surface font-sans">Context:</strong> Rapid prototype conceived, engineered, and deployed under a strict 3-hour competitive hackathon sprint.
                 </p>
                 <p>
-                  <strong class="font-medium text-on-surface">Engineering:</strong> Integrates Google Gemini API zero-shot reasoning chains with Pandas CSV ledger parsing to provide interactive financial health diagnosis and automatic spending categorization.
+                  <strong class="font-medium text-on-surface font-sans">Engineering:</strong> Integrates Google Gemini API zero-shot reasoning chains with Pandas CSV ledger parsing to provide interactive financial health diagnosis and automatic spending categorization.
                 </p>
               </div>
 
               <!-- Pipeline -->
-              <div class="p-3 rounded bg-surface-container/50 border hairline-border text-[10px] font-mono text-stone space-y-1">
-                <div class="text-clay">REASONING PIPELINE:</div>
-                <div>RAW CSV → SCHEMA NORMALIZATION → GEMINI ZERO-SHOT → HEALTH DIAGNOSTIC</div>
+              <div class="p-3 rounded bg-surface-container/50 border hairline-border text-xs font-sans text-stone space-y-1">
+                <div class="text-clay font-medium">Reasoning pipeline:</div>
+                <div class="font-mono text-[11px]">Raw CSV → Schema normalization → Gemini zero-shot → Health diagnostic</div>
               </div>
             </div>
-            <div class="font-mono text-[11px] text-stone hairline-t pt-4">
-              <span>STACK: Python · Gemini API · Streamlit · Pandas</span>
+            <div class="font-sans text-xs text-stone hairline-t pt-4">
+              <span>Stack: Python · Gemini API · Streamlit · Pandas</span>
             </div>
           </article>
         </div>
@@ -696,30 +703,31 @@ Topology status: Orthogonal convergence</pre>
     <!-- CHAPTER 08 — RETRIEVAL & VECTOR TOPOLOGY -->
     <section id="ch08" data-chapter="8" data-title="Retrieval" class="min-h-screen w-full flex items-center justify-center px-6 md:px-20 py-24">
       <div class="max-w-5xl w-full flex flex-col gap-12 reveal-on-scroll">
-        <div class="flex items-center gap-3 text-xs font-mono text-on-surface-muted hairline-b pb-4">
-          <span class="text-clay">08 / Retrieval</span>
-          <span class="text-stone/40">|</span>
-          <span>Grounded Semantic Manifolds</span>
+        <div class="flex items-center gap-3 text-xs font-sans text-on-surface-muted hairline-b pb-4">
+          <span class="font-serif text-lg text-on-surface">Retrieval</span>
+          <span class="text-stone/40">/</span>
+          <span class="text-stone">Grounded semantic manifolds</span>
+          <span class="text-stone/40 font-mono ml-auto">08</span>
         </div>
         <div class="space-y-3 max-w-2xl">
-          <h2 class="font-serif italic text-3xl sm:text-4xl font-light text-on-surface" data-blur-text>
+          <h2 class="font-serif italic text-3xl sm:text-5xl font-normal text-on-surface leading-[1.2]" data-blur-text>
             Deterministic grounding for non-deterministic intelligence.
           </h2>
-          <p class="text-sm sm:text-base text-on-surface-muted font-light">
+          <p class="text-sm sm:text-base text-on-surface-muted font-normal">
             "Meaning is proximity." Retrieval-Augmented Generation bridges raw vector mathematics with verifiable document facts.
           </p>
         </div>
 
         <!-- Interactive Vector Bench -->
         <div class="border-glow-card p-6 md:p-8 border hairline-border rounded-lg bg-surface-card/70 backdrop-blur-sm flex flex-col gap-6">
-          <div class="flex items-center justify-between text-xs font-mono text-stone">
-            <span>COSINE SIMILARITY TEST BENCH</span>
-            <span class="text-clay">HNSW GRAPH // TOP_K=1</span>
+          <div class="flex items-center justify-between text-xs font-sans text-stone">
+            <span>Cosine similarity interactive test</span>
+            <span class="text-clay font-sans text-xs"><span class="font-mono text-[11px]">HNSW</span> graph · <span class="font-mono text-[11px]">top_k=1</span></span>
           </div>
           
           <!-- Sample Query Quick Buttons -->
-          <div class="flex flex-wrap gap-2 text-[11px] font-mono">
-            <span class="text-stone py-1">Quick Inquiries:</span>
+          <div class="flex flex-wrap gap-2 text-xs font-sans">
+            <span class="text-stone py-1">Quick inquiries:</span>
             <button type="button" class="quick-query-btn px-2.5 py-1 rounded bg-surface-container border hairline-border text-on-surface-muted hover:text-on-surface hover:border-clay transition-colors" data-query="How does MarkMe eliminate proxy attendance?">
               MarkMe Security
             </button>
@@ -732,18 +740,18 @@ Topology status: Orthogonal convergence</pre>
           </div>
 
           <div class="flex flex-col sm:flex-row gap-3">
-            <input id="rag-query-input" type="text" value="How does MarkMe eliminate proxy attendance?" placeholder="Query vector index..." class="flex-grow px-4 py-3 bg-surface-container border hairline-border rounded text-xs font-mono text-on-surface focus:outline-none focus:border-clay transition-colors" />
-            <button id="rag-run-btn" type="button" class="px-6 py-3 bg-surface-container hover:bg-stone/20 border hairline-border rounded text-xs font-mono text-on-surface transition-colors flex items-center justify-center gap-2">
-              <span>Execute Search</span>
+            <input id="rag-query-input" type="text" value="How does MarkMe eliminate proxy attendance?" placeholder="Query vector index..." class="flex-grow px-4 py-3 bg-surface-container border hairline-border rounded text-xs font-sans text-on-surface focus:outline-none focus:border-clay transition-colors" />
+            <button id="rag-run-btn" type="button" class="px-6 py-3 bg-surface-container hover:bg-stone/20 border hairline-border rounded text-xs font-sans text-on-surface font-medium transition-colors flex items-center justify-center gap-2">
+              <span>Execute search</span>
               <span class="text-clay">→</span>
             </button>
           </div>
-          <div id="rag-output-box" class="p-4 rounded bg-surface-container/50 border hairline-border font-mono text-xs flex flex-col gap-2">
-            <div class="flex items-center justify-between text-clay text-[11px]">
-              <span>[MATCH: 0.964] Chunk #184 (MarkMe Cryptographic Layer)</span>
-              <span>38ms // HNSW GRAPH</span>
+          <div id="rag-output-box" class="p-4 rounded bg-surface-container/50 border hairline-border text-xs flex flex-col gap-2">
+            <div class="flex items-center justify-between text-clay text-xs font-sans">
+              <span><span class="font-mono text-[11px]">0.964</span> · Chunk #184 (MarkMe Cryptographic Layer)</span>
+              <span class="font-mono text-[11px] text-stone">38ms · HNSW</span>
             </div>
-            <p class="text-on-surface font-sans text-xs sm:text-sm font-light leading-relaxed">
+            <p class="text-on-surface font-sans text-xs sm:text-sm font-normal leading-relaxed">
               "MarkMe generates rolling time-slotted cryptographic UUIDs paired with strictly calibrated RSSI signal thresholds (-68dBm cutoff), preventing replay packets and unauthorized remote attendance logging."
             </p>
           </div>
@@ -754,73 +762,79 @@ Topology status: Orthogonal convergence</pre>
     <!-- CHAPTER 09 — THE FRONTIER -->
     <section id="ch09" data-chapter="9" data-title="Frontier" class="min-h-screen w-full flex items-center justify-center px-6 md:px-20 py-24">
       <div class="max-w-5xl w-full flex flex-col gap-12 reveal-on-scroll">
-        <div class="flex items-center justify-between text-xs font-mono text-on-surface-muted hairline-b pb-4">
-          <div class="flex items-center gap-3">
-            <span class="text-clay">09 / Frontier</span>
-            <span class="text-stone/40">|</span>
-            <span>Theoretical Inquiries</span>
+        <div class="flex items-center justify-between text-xs font-sans text-on-surface-muted hairline-b pb-4">
+          <div class="flex items-center gap-2">
+            <span class="text-clay font-medium">Chapter 09</span>
+            <span class="text-stone/40">·</span>
+            <span>Frontier</span>
+            <span class="text-stone/40">·</span>
+            <span class="text-stone">Theoretical inquiries</span>
           </div>
-          <span class="text-stone">Research Notebook // Clearly Distinguished</span>
+          <span class="text-stone text-[11px] font-sans">Research notebook</span>
         </div>
         <div class="space-y-3 max-w-2xl">
-          <h2 class="font-serif italic text-3xl sm:text-4xl font-light text-on-surface" data-blur-text>
+          <h2 class="font-serif italic text-3xl sm:text-5xl font-light text-on-surface" data-blur-text>
             Active curiosities on the horizon.
           </h2>
-          <p class="text-sm sm:text-base text-on-surface-muted font-light">
+          <p class="text-sm sm:text-base text-on-surface-muted font-normal leading-relaxed">
             Pushing past standard industry templates toward fundamental architectural explorations. Clearly distinguishing active production building from theoretical inquiries.
           </p>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div class="border-glow-card p-6 border hairline-border rounded bg-surface-low/70 flex flex-col justify-between gap-4">
             <div class="space-y-3">
-              <div class="flex items-center justify-between font-mono text-xs">
-                <span class="text-clay">01 // Quantum Superposition</span>
-                <span class="px-2 py-0.5 text-[10px] rounded border border-clay/30 text-clay">EXPLORING</span>
+              <div class="flex items-center justify-between font-sans text-xs">
+                <span class="text-clay font-medium">Quantum superposition</span>
+                <span class="px-2.5 py-0.5 text-[11px] rounded bg-clay/10 text-clay font-medium">Exploring</span>
               </div>
               <h3 class="font-sans text-base font-medium text-on-surface">Quantum Probability Matrices</h3>
-              <p class="text-xs text-on-surface-muted font-light leading-relaxed">Exploring qubit state spaces and Hilbert projections for combinatorial optimization and high-dimensional vector orthogonalization.</p>
+              <p class="text-xs sm:text-sm text-on-surface-muted font-normal leading-relaxed">Exploring qubit state spaces and Hilbert projections for combinatorial optimization and high-dimensional vector orthogonalization.</p>
             </div>
-            <div class="text-[10px] font-mono text-stone hairline-t pt-3">
-              PARADIGM: Complex Unitary Matrices
+            <div class="text-xs font-sans text-stone hairline-t pt-3 flex items-center gap-2">
+              <span class="text-stone/60">Paradigm:</span>
+              <span class="text-on-surface-muted">Complex Unitary Matrices</span>
             </div>
           </div>
           <div class="border-glow-card p-6 border hairline-border rounded bg-surface-low/70 flex flex-col justify-between gap-4">
             <div class="space-y-3">
-              <div class="flex items-center justify-between font-mono text-xs">
-                <span class="text-terracotta">02 // Spatial Models</span>
-                <span class="px-2 py-0.5 text-[10px] rounded border border-terracotta/30 text-terracotta">RESEARCHING</span>
+              <div class="flex items-center justify-between font-sans text-xs">
+                <span class="text-terracotta font-medium">Spatial models</span>
+                <span class="px-2.5 py-0.5 text-[11px] rounded bg-terracotta/10 text-terracotta font-medium">Researching</span>
               </div>
               <h3 class="font-sans text-base font-medium text-on-surface">Visual World Priors</h3>
-              <p class="text-xs text-on-surface-muted font-light leading-relaxed">Investigating generative visual world models that anticipate spatial state transitions prior to hardware action in physical environments.</p>
+              <p class="text-xs sm:text-sm text-on-surface-muted font-normal leading-relaxed">Investigating generative visual world models that anticipate spatial state transitions prior to hardware action in physical environments.</p>
             </div>
-            <div class="text-[10px] font-mono text-stone hairline-t pt-3">
-              PARADIGM: Latent Dynamics Anticipation
+            <div class="text-xs font-sans text-stone hairline-t pt-3 flex items-center gap-2">
+              <span class="text-stone/60">Paradigm:</span>
+              <span class="text-on-surface-muted">Latent Dynamics Anticipation</span>
             </div>
           </div>
           <div class="border-glow-card p-6 border hairline-border rounded bg-surface-low/70 flex flex-col justify-between gap-4">
             <div class="space-y-3">
-              <div class="flex items-center justify-between font-mono text-xs">
-                <span class="text-stone">03 // Consensus</span>
-                <span class="px-2 py-0.5 text-[10px] rounded border border-stone/30 text-stone">EXPLORING</span>
+              <div class="flex items-center justify-between font-sans text-xs">
+                <span class="text-stone font-medium">Consensus mechanisms</span>
+                <span class="px-2.5 py-0.5 text-[11px] rounded bg-stone/15 text-stone font-medium">Exploring</span>
               </div>
               <h3 class="font-sans text-base font-medium text-on-surface">Multi-Agent Critique Graphs</h3>
-              <p class="text-xs text-on-surface-muted font-light leading-relaxed">Decentralized networks where specialized autonomous sub-agents negotiate, critique, and cryptographically verify logical deductions.</p>
+              <p class="text-xs sm:text-sm text-on-surface-muted font-normal leading-relaxed">Decentralized networks where specialized autonomous sub-agents negotiate, critique, and cryptographically verify logical deductions.</p>
             </div>
-            <div class="text-[10px] font-mono text-stone hairline-t pt-3">
-              PARADIGM: Asymmetric Dispute Resolution
+            <div class="text-xs font-sans text-stone hairline-t pt-3 flex items-center gap-2">
+              <span class="text-stone/60">Paradigm:</span>
+              <span class="text-on-surface-muted">Asymmetric Dispute Resolution</span>
             </div>
           </div>
           <div class="border-glow-card p-6 border hairline-border rounded bg-surface-low/70 flex flex-col justify-between gap-4">
             <div class="space-y-3">
-              <div class="flex items-center justify-between font-mono text-xs">
-                <span class="text-on-surface">04 // Hardware</span>
-                <span class="px-2 py-0.5 text-[10px] rounded border border-white/20 text-on-surface">RESEARCHING</span>
+              <div class="flex items-center justify-between font-sans text-xs">
+                <span class="text-on-surface font-medium">Embedded hardware</span>
+                <span class="px-2.5 py-0.5 text-[11px] rounded bg-white/10 text-on-surface font-medium">Researching</span>
               </div>
               <h3 class="font-sans text-base font-medium text-on-surface">Sub-Milliwatt Neuromorphic Compute</h3>
-              <p class="text-xs text-on-surface-muted font-light leading-relaxed">Spike-timing mechanisms enabling event-driven inference on embedded microcontroller nodes without thermal throttling.</p>
+              <p class="text-xs sm:text-sm text-on-surface-muted font-normal leading-relaxed">Spike-timing mechanisms enabling event-driven inference on embedded microcontroller nodes without thermal throttling.</p>
             </div>
-            <div class="text-[10px] font-mono text-stone hairline-t pt-3">
-              PARADIGM: Event-Driven Spiking Nets
+            <div class="text-xs font-sans text-stone hairline-t pt-3 flex items-center gap-2">
+              <span class="text-stone/60">Paradigm:</span>
+              <span class="text-on-surface-muted">Event-Driven Spiking Nets</span>
             </div>
           </div>
         </div>
@@ -830,66 +844,73 @@ Topology status: Orthogonal convergence</pre>
     <!-- CHAPTER 10 — TRAJECTORY & MILESTONES -->
     <section id="ch10" data-chapter="10" data-title="Trajectory" class="min-h-screen w-full flex items-center justify-center px-6 md:px-20 py-24">
       <div class="max-w-5xl w-full flex flex-col gap-12 reveal-on-scroll">
-        <div class="flex items-center justify-between text-xs font-mono text-on-surface-muted hairline-b pb-4">
-          <div class="flex items-center gap-3">
-            <span class="text-clay">10 / Trajectory</span>
-            <span class="text-stone/40">|</span>
-            <span>Education &amp; Distinction</span>
+        <div class="flex items-center justify-between text-xs font-sans text-on-surface-muted hairline-b pb-4">
+          <div class="flex items-center gap-2">
+            <span class="text-clay font-medium">Chapter 10</span>
+            <span class="text-stone/40">·</span>
+            <span>Trajectory</span>
+            <span class="text-stone/40">·</span>
+            <span class="text-stone">Education &amp; distinction</span>
           </div>
-          <span class="text-stone">Verifiable Academic Records</span>
+          <span class="text-stone text-[11px] font-sans">Academic records</span>
+        </div>
+        <div class="space-y-2 max-w-2xl">
+          <h2 class="font-serif italic text-3xl sm:text-5xl font-light text-on-surface" data-blur-text>
+            Academic foundations &amp; distinction.
+          </h2>
         </div>
         <div class="space-y-6">
           <!-- Item 1: Competition 1st -->
           <div class="border-glow-card p-6 border hairline-border rounded bg-surface-low/80 flex flex-col sm:flex-row sm:items-baseline justify-between gap-4">
-            <div class="space-y-1">
-              <div class="flex items-center gap-2 font-mono text-xs text-clay">
-                <span>1ST PLACE</span> · <span>SOFTWARE RESEARCH AWARD</span>
+            <div class="space-y-1.5">
+              <div class="flex items-center gap-2 font-sans text-xs text-clay font-medium">
+                <span>First place</span> <span class="text-stone/40">·</span> <span class="text-stone font-normal">Software research award</span>
               </div>
               <h3 class="font-sans text-lg font-medium text-on-surface">Winner — Software Development &amp; Research Competition</h3>
-              <p class="text-xs text-on-surface-muted font-light max-w-xl">
+              <p class="text-xs sm:text-sm text-on-surface-muted font-normal max-w-xl leading-relaxed">
                 Awarded top honors for designing and defending the offline-first MarkMe BLE proximity verification protocol.
               </p>
             </div>
-            <span class="font-mono text-xs text-stone whitespace-nowrap">Pune Regional Symposium</span>
+            <span class="font-sans text-xs text-stone whitespace-nowrap">Pune Regional Symposium</span>
           </div>
           <!-- Item 2: Tech Setu 2nd -->
           <div class="border-glow-card p-6 border hairline-border rounded bg-surface-low/80 flex flex-col sm:flex-row sm:items-baseline justify-between gap-4">
-            <div class="space-y-1">
-              <div class="flex items-center gap-2 font-mono text-xs text-terracotta">
-                <span>2ND PLACE</span> · <span>MATHEMATICS &amp; STATISTICS</span>
+            <div class="space-y-1.5">
+              <div class="flex items-center gap-2 font-sans text-xs text-terracotta font-medium">
+                <span>Second place</span> <span class="text-stone/40">·</span> <span class="text-stone font-normal">Mathematics &amp; statistics</span>
               </div>
               <h3 class="font-sans text-lg font-medium text-on-surface">Tech Setu Inter-College Competition</h3>
-              <p class="text-xs text-on-surface-muted font-light max-w-xl">
+              <p class="text-xs sm:text-sm text-on-surface-muted font-normal max-w-xl leading-relaxed">
                 Distinction in advanced numerical proofs, probabilistic modeling, and statistical inference rigor.
               </p>
             </div>
-            <span class="font-mono text-xs text-stone whitespace-nowrap">Tech Setu Committee</span>
+            <span class="font-sans text-xs text-stone whitespace-nowrap">Tech Setu Committee</span>
           </div>
           <!-- Item 3: Degree MMCC -->
           <div class="border-glow-card p-6 border hairline-border rounded bg-surface-low/80 flex flex-col sm:flex-row sm:items-baseline justify-between gap-4">
-            <div class="space-y-1">
-              <div class="flex items-center gap-2 font-mono text-xs text-stone">
-                <span>DEGREE</span> · <span>UNDERGRADUATE STUDIES</span>
+            <div class="space-y-1.5">
+              <div class="flex items-center gap-2 font-sans text-xs text-stone font-medium">
+                <span>Degree</span> <span class="text-stone/40">·</span> <span class="text-stone font-normal">Undergraduate studies</span>
               </div>
               <h3 class="font-sans text-lg font-medium text-on-surface">Marathwada Mitra Mandal College of Commerce (MMCC)</h3>
-              <p class="text-xs text-on-surface-muted font-light max-w-xl">
+              <p class="text-xs sm:text-sm text-on-surface-muted font-normal max-w-xl leading-relaxed">
                 Bachelor of Business Administration in Computer Applications (BBA CA). Core algorithms, data structures, and relational systems.
               </p>
             </div>
-            <span class="font-mono text-xs text-stone whitespace-nowrap">Pune University</span>
+            <span class="font-sans text-xs text-stone whitespace-nowrap">Pune University</span>
           </div>
           <!-- Item 4: APS -->
           <div class="border-glow-card p-6 border hairline-border rounded bg-surface-low/80 flex flex-col sm:flex-row sm:items-baseline justify-between gap-4">
-            <div class="space-y-1">
-              <div class="flex items-center gap-2 font-mono text-xs text-stone">
-                <span>FOUNDATION</span> · <span>SECONDARY EDUCATION</span>
+            <div class="space-y-1.5">
+              <div class="flex items-center gap-2 font-sans text-xs text-stone font-medium">
+                <span>Foundation</span> <span class="text-stone/40">·</span> <span class="text-stone font-normal">Secondary education</span>
               </div>
               <h3 class="font-sans text-lg font-medium text-on-surface">Army Public School (APS)</h3>
-              <p class="text-xs text-on-surface-muted font-light max-w-xl">
+              <p class="text-xs sm:text-sm text-on-surface-muted font-normal max-w-xl leading-relaxed">
                 Scientific discipline, analytical problem solving, and distinction in physical and mathematical sciences.
               </p>
             </div>
-            <span class="font-mono text-xs text-stone whitespace-nowrap">APS Alumni</span>
+            <span class="font-sans text-xs text-stone whitespace-nowrap">APS Alumni</span>
           </div>
         </div>
       </div>
@@ -898,16 +919,16 @@ Topology status: Orthogonal convergence</pre>
     <!-- CHAPTER 11 — SYNTHESIS -->
     <section id="ch11" data-chapter="11" data-title="Synthesis" class="min-h-screen w-full flex items-center justify-center px-6 md:px-20 py-24 text-center">
       <div class="max-w-3xl w-full flex flex-col items-center gap-8 reveal-on-scroll">
-        <span class="text-xs font-mono tracking-widest text-clay uppercase">11 / Synthesis</span>
-        <h2 class="font-serif italic text-3xl sm:text-5xl font-light text-on-surface leading-tight" data-blur-text>
+        <span class="text-xs font-sans text-clay font-medium">Chapter 11 · Synthesis</span>
+        <h2 class="font-serif italic text-3xl sm:text-5xl lg:text-6xl font-light text-on-surface leading-tight" data-blur-text>
           From nothing, something intelligent emerged.
         </h2>
-        <p class="font-sans text-base text-stone font-light max-w-md leading-relaxed">
+        <p class="font-serif italic text-xl sm:text-2xl text-stone/90 font-light max-w-lg leading-relaxed">
           "I build systems that turn ideas into intelligence."
         </p>
         <div class="w-12 h-[1px] bg-stone/30 my-2"></div>
-        <span class="font-mono text-xs text-stone tracking-wide">
-          PUNE, INDIA · 18.5204° N, 73.8567° E
+        <span class="font-mono text-xs text-stone">
+          Pune, India · 18.5204° N, 73.8567° E
         </span>
       </div>
     </section>
@@ -917,41 +938,43 @@ Topology status: Orthogonal convergence</pre>
       <div class="max-w-5xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-start reveal-on-scroll">
         <!-- Left: Verified Contact Coordinates -->
         <div class="lg:col-span-5 flex flex-col gap-6">
-          <div class="flex items-center gap-3 text-xs font-mono text-on-surface-muted hairline-b pb-3">
-            <span class="text-clay">12 / Transmit</span>
-            <span class="text-stone/40">|</span>
-            <span>Direct Channel</span>
+          <div class="flex items-center gap-2 text-xs font-sans text-on-surface-muted hairline-b pb-3">
+            <span class="text-clay font-medium">Chapter 12</span>
+            <span class="text-stone/40">·</span>
+            <span>Transmit</span>
+            <span class="text-stone/40">·</span>
+            <span class="text-stone">Direct channel</span>
           </div>
           <div class="space-y-3">
-            <h2 class="font-serif italic text-3xl sm:text-4xl font-light text-on-surface" data-blur-text>
+            <h2 class="font-serif italic text-3xl sm:text-5xl font-light text-on-surface" data-blur-text>
               Let's build something.
             </h2>
-            <p class="text-xs sm:text-sm text-on-surface-muted font-light leading-relaxed">
+            <p class="text-sm text-on-surface-muted font-normal leading-relaxed">
               Open to systems engineering collaborations, machine learning architecture, and software development opportunities.
             </p>
           </div>
-          <div class="space-y-3 pt-2 font-mono text-xs">
+          <div class="space-y-3 pt-2 font-sans text-xs">
             <div class="border-glow-card p-3 border hairline-border rounded bg-surface-low/80 flex flex-col gap-1">
-              <span class="text-[10px] text-clay font-mono uppercase tracking-wider">Primary Channel — LinkedIn</span>
-              <a href="https://www.linkedin.com/in/rohan-rakshe" target="_blank" rel="noopener noreferrer" class="text-on-surface hover:text-clay transition-colors font-sans font-medium text-sm flex items-center justify-between">
+              <span class="text-xs text-clay font-medium">Primary channel — LinkedIn</span>
+              <a href="https://www.linkedin.com/in/rohan-rakshe" target="_blank" rel="noopener noreferrer" class="text-on-surface hover:text-clay transition-colors font-sans font-normal text-sm flex items-center justify-between">
                 <span>linkedin.com/in/rohan-rakshe</span>
                 <span class="text-xs text-clay">↗</span>
               </a>
             </div>
             <div class="border-glow-card p-3 border hairline-border rounded bg-surface-low/80 flex flex-col gap-1">
-              <span class="text-[10px] text-stone uppercase">Telephony</span>
-              <a href="tel:+918600728359" class="text-on-surface hover:text-clay transition-colors font-sans font-medium text-sm">
+              <span class="text-xs text-stone font-medium">Telephone</span>
+              <a href="tel:+918600728359" class="text-on-surface hover:text-clay transition-colors font-sans text-sm">
                 +91 8600728359
               </a>
             </div>
             <div class="border-glow-card p-3 border hairline-border rounded bg-surface-low/80 flex flex-col gap-1">
-              <span class="text-[10px] text-stone uppercase">Electronic Mail</span>
-              <span class="text-on-surface font-sans font-medium text-sm select-all">
+              <span class="text-xs text-stone font-medium">Email</span>
+              <span class="text-on-surface font-sans text-sm select-all">
                 rohanrakshe8@gmail.com
               </span>
             </div>
             <div class="border-glow-card p-3 border hairline-border rounded bg-surface-low/80 flex flex-col gap-1">
-              <span class="text-[10px] text-stone uppercase">Location</span>
+              <span class="text-xs text-stone font-medium">Location</span>
               <span class="text-on-surface font-sans text-sm">
                 Pune, Maharashtra, India
               </span>
@@ -961,24 +984,24 @@ Topology status: Orthogonal convergence</pre>
 
         <!-- Right: Editorial Contact Form -->
         <div class="border-glow-card lg:col-span-7 p-8 border hairline-border rounded-lg bg-surface-card/80 backdrop-blur-md flex flex-col gap-6">
-          <div class="flex items-center justify-between text-xs font-mono text-stone hairline-b pb-3">
-            <span>SECURE INQUIRY DISPATCH</span>
-            <span class="text-clay">READY</span>
+          <div class="flex items-center justify-between text-xs font-sans text-stone hairline-b pb-3">
+            <span>Inquiry dispatch</span>
+            <span class="text-clay font-medium flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-clay inline-block"></span>Available for projects</span>
           </div>
           <form id="contact-form" class="space-y-4">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div class="flex flex-col gap-1.5 font-mono text-xs">
-                <label for="sender-name" class="text-stone">Sender Identity</label>
-                <input id="sender-name" type="text" placeholder="Your Name" required class="px-3.5 py-2.5 bg-surface-container border hairline-border rounded text-xs font-sans text-on-surface focus:outline-none focus:border-clay transition-colors" />
+              <div class="flex flex-col gap-1.5 font-sans text-xs">
+                <label for="sender-name" class="text-stone font-medium">Your name</label>
+                <input id="sender-name" type="text" placeholder="Full name" required class="px-3.5 py-2.5 bg-surface-container border hairline-border rounded text-sm font-sans text-on-surface focus:outline-none focus:border-clay transition-colors" />
               </div>
-              <div class="flex flex-col gap-1.5 font-mono text-xs">
-                <label for="sender-email" class="text-stone">Email Address</label>
-                <input id="sender-email" type="email" placeholder="email@domain.com" required class="px-3.5 py-2.5 bg-surface-container border hairline-border rounded text-xs font-sans text-on-surface focus:outline-none focus:border-clay transition-colors" />
+              <div class="flex flex-col gap-1.5 font-sans text-xs">
+                <label for="sender-email" class="text-stone font-medium">Email address</label>
+                <input id="sender-email" type="email" placeholder="name@domain.com" required class="px-3.5 py-2.5 bg-surface-container border hairline-border rounded text-sm font-sans text-on-surface focus:outline-none focus:border-clay transition-colors" />
               </div>
             </div>
-            <div class="flex flex-col gap-1.5 font-mono text-xs">
-              <label for="sender-topic" class="text-stone">Domain Area</label>
-              <select id="sender-topic" class="px-3.5 py-2.5 bg-surface-container border hairline-border rounded text-xs font-sans text-on-surface focus:outline-none focus:border-clay transition-colors">
+            <div class="flex flex-col gap-1.5 font-sans text-xs">
+              <label for="sender-topic" class="text-stone font-medium">Focus area</label>
+              <select id="sender-topic" class="px-3.5 py-2.5 bg-surface-container border hairline-border rounded text-sm font-sans text-on-surface focus:outline-none focus:border-clay transition-colors">
                 <option>Systems &amp; Native Engineering</option>
                 <option>Machine Learning &amp; AI Research</option>
                 <option>RAG &amp; Vector Embeddings</option>
@@ -986,15 +1009,15 @@ Topology status: Orthogonal convergence</pre>
                 <option>General Academic Inquiry</option>
               </select>
             </div>
-            <div class="flex flex-col gap-1.5 font-mono text-xs">
-              <label for="sender-msg" class="text-stone">Message Content</label>
-              <textarea id="sender-msg" rows="4" placeholder="Detail your proposition or project context..." required class="px-3.5 py-2.5 bg-surface-container border hairline-border rounded text-xs font-sans text-on-surface focus:outline-none focus:border-clay transition-colors"></textarea>
+            <div class="flex flex-col gap-1.5 font-sans text-xs">
+              <label for="sender-msg" class="text-stone font-medium">Message</label>
+              <textarea id="sender-msg" rows="4" placeholder="Detail your project context or inquiry..." required class="px-3.5 py-2.5 bg-surface-container border hairline-border rounded text-sm font-sans text-on-surface focus:outline-none focus:border-clay transition-colors"></textarea>
             </div>
-            <button id="submit-btn" type="submit" class="w-full py-3 bg-clay hover:bg-terracotta text-background font-mono text-xs font-medium tracking-wider uppercase rounded transition-colors duration-200">
-              Transmit Signal →
+            <button id="submit-btn" type="submit" class="w-full py-3 bg-clay hover:bg-terracotta text-background font-sans text-sm font-medium rounded transition-colors duration-200">
+              Send inquiry →
             </button>
           </form>
-          <div id="form-feedback" class="hidden p-4 border hairline-border rounded bg-surface-container font-mono text-xs text-clay">
+          <div id="form-feedback" class="hidden p-4 border hairline-border rounded bg-surface-container font-sans text-xs text-clay">
             <!-- Dynamically populated on submission -->
           </div>
         </div>
@@ -1004,15 +1027,15 @@ Topology status: Orthogonal convergence</pre>
   </main>
 
   <!-- Editorial Architectural Footer -->
-  <footer class="relative z-10 w-full px-6 md:px-14 py-8 hairline-t bg-black text-xs font-mono text-stone flex flex-col sm:flex-row items-center justify-between gap-4">
+  <footer class="relative z-10 w-full px-6 md:px-14 py-8 hairline-t bg-[#11110F] text-xs font-sans text-stone flex flex-col sm:flex-row items-center justify-between gap-4">
     <div>
       © <span id="footer-year">2026</span> Rohan Rakshe — Architectural &amp; Systems Portfolio
     </div>
-    <div class="flex items-center gap-6">
+    <div class="flex items-center gap-6 font-sans">
       <a href="#ch00" class="hover:text-on-surface transition-colors">Top ↑</a>
       <a href="https://www.linkedin.com/in/rohan-rakshe" target="_blank" rel="noopener noreferrer" class="hover:text-on-surface hover:text-clay transition-colors flex items-center gap-1">
         <span>LinkedIn</span>
-        <span class="text-[10px] text-clay">↗</span>
+        <span class="text-[11px] text-clay">↗</span>
       </a>
     </div>
   </footer>

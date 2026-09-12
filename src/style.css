@@ -4,22 +4,27 @@
 
 @layer base {
   :root {
-    --bg: #000000;
+    --bg: #11110F;
     --text: #E8E3D9;
     --clay: #B76545;
     --clay-dark: #7F4636;
     --stone: #8D887E;
-    --surface-container: #121110;
-    --surface-border: rgba(232, 227, 217, 0.09);
+    --surface-container: #24221E;
+    --surface-border: rgba(232, 227, 217, 0.12);
+
+    /* Typography System Variables */
+    --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-serif: 'Instrument Serif', Georgia, serif;
+    --font-mono: 'IBM Plex Mono', monospace;
   }
 
   html, body {
     width: 100%;
     margin: 0;
     padding: 0;
-    background-color: #000000;
+    background-color: #11110F;
     color: #E8E3D9;
-    font-family: 'Geist', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: var(--font-sans);
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -28,7 +33,7 @@
 
   ::selection {
     background-color: #B76545;
-    color: #000000;
+    color: #11110F;
   }
 
   ::-webkit-scrollbar {
@@ -37,11 +42,11 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #000000;
+    background: #11110F;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #1a1917;
+    background: #24221E;
     border-radius: 2px;
   }
 
@@ -73,17 +78,17 @@
 
 /* Glassmorphism & Surface elevation */
 .editorial-glass {
-  background: rgba(0, 0, 0, 0.88);
+  background: rgba(17, 17, 15, 0.82);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(232, 227, 217, 0.09);
+  border: 1px solid rgba(232, 227, 217, 0.12);
 }
 
 .editorial-card {
-  background: rgba(10, 10, 9, 0.82);
+  background: rgba(22, 21, 19, 0.75);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(232, 227, 217, 0.08);
+  border: 1px solid rgba(232, 227, 217, 0.1);
   transition: border-color 0.25s ease, transform 0.25s ease;
 }
 
@@ -137,7 +142,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: #000000;
+  background: #11110F;
   opacity: 0;                          /* fades in via JS */
   will-change: opacity;
   /* Keep the 3D layer clickable underneath once overlay is gone */
@@ -185,12 +190,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 /* ── Subtitle ──────────────────────────────────────────────────────── */
 #sig-subtitle {
   margin-top: 2rem;
-  font-family: 'Newsreader', Georgia, serif;
-  font-size: clamp(0.7rem, 1.8vw, 0.9rem);
+  font-family: var(--font-serif);
+  font-size: clamp(0.85rem, 2vw, 1.15rem);
   font-style: italic;
-  font-weight: 300;
-  letter-spacing: 0.07em;
-  color: rgba(232, 227, 217, 0.48);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  color: rgba(232, 227, 217, 0.65);
   opacity: 0;
   transform: translateY(8px);
   text-align: center;
@@ -220,11 +225,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 
 .sig-prompt-text {
-  font-family: 'Geist', 'Inter', sans-serif;
-  font-size: 0.6rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(141, 136, 126, 0.5);
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: rgba(141, 136, 126, 0.6);
 }
 
 @keyframes sig-tick-bob {
@@ -286,10 +290,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .aero-orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(95px);
-  -webkit-filter: blur(95px);
+  filter: blur(85px);
+  -webkit-filter: blur(85px);
   will-change: transform, opacity;
-  opacity: 0.20;
+  opacity: 0.36;
   pointer-events: none;
 }
 
@@ -329,7 +333,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   height: min(50vw, 500px);
   top: 60%;
   left: 30%;
-  background: radial-gradient(circle at center, rgba(155, 75, 45, 0.20) 0%, rgba(0, 0, 0, 0.8) 60%, transparent 80%);
+  background: radial-gradient(circle at center, rgba(155, 75, 45, 0.25) 0%, rgba(17, 17, 15, 0.6) 60%, transparent 80%);
   animation: aero-drift-4 28s ease-in-out infinite alternate;
 }
 
