@@ -1,142 +1,138 @@
 /**
- * CLICK SPARKLE
- * Inspired by React Bits Click Sparkle effect (https://reactbits.dev/animations/click-sparkle)
+ * CLICK SPARK
+ * Direct implementation of React Bits <ClickSpark /> component
+ * Source & Specification: https://reactbits.dev/animations/click-sparkle
  * 
- * Spawns an ethereal burst of rotating 4-point star sparkles radiating
- * outward from click coordinates, matching the portfolio's bespoke palette.
+ * Renders directional spark lines radiating outward from click coordinates
+ * with easing, scaling distance, and line decay.
  */
 
-export function initClickSparkle() {
+export function initClickSparkle(options = {}) {
   // Respect reduced motion preference
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     return;
   }
 
-  // Create persistent full-screen canvas
+  const {
+    sparkColor = '#ffffff',
+    sparkSize = 10,
+    sparkRadius = 15,
+    sparkCount = 8,
+    duration = 400,
+    easing = 'ease-out',
+    extraScale = 1.0,
+  } = options;
+
+  // Create persistent full-screen canvas overlay
   const canvas = document.createElement('canvas');
-  canvas.id = 'click-sparkle-canvas';
-  canvas.style.cssText = 'position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:10003;';
+  canvas.id = 'click-spark-canvas';
+  canvas.style.cssText = `
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 10003;
+    display: block;
+    user-select: none;
+  `;
   document.body.appendChild(canvas);
 
   const ctx = canvas.getContext('2d');
-  let width = (canvas.width = window.innerWidth);
-  let height = (canvas.height = window.innerHeight);
+  let sparks = [];
+  let animationId = null;
 
-  const onResize = () => {
-    width = canvas.width = window.innerWidth;
-    height = canvas.height = window.innerHeight;
+  const easeFunc = (t) => {
+    switch (easing) {
+      case 'linear':
+        return t;
+      case 'ease-in':
+        return t * t;
+      case 'ease-in-out':
+        return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+      default:
+        return t * (2 - t); // 'ease-out'
+    }
   };
-  window.addEventListener('resize', onResize, { passive: true });
 
-  // Curated theme palette for sparkles
-  const colors = [
-    '#C8A882', // Antique Gold
-    '#B76545', // Warm Clay
-    '#D4A270', // Amber Bronze
-    '#E8E3D9', // Soft Bone
-    '#FFF8EF', // Bright Starlight
-  ];
+  const resizeCanvas = () => {
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = window.innerWidth * dpr;
+    canvas.height = window.innerHeight * dpr;
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.scale(dpr, dpr);
+  };
 
-  const sparkles = [];
-  let rafId = null;
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas, { passive: true });
 
-  function spawnSparkles(originX, originY) {
-    const count = 9 + Math.floor(Math.random() * 4); // 9-12 sparkles
+  const draw = (timestamp) => {
+    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
 
-    for (let i = 0; i < count; i++) {
-      const angle = Math.random() * Math.PI * 2;
-      const speed = 2.2 + Math.random() * 4.2;
-      const size = 4 + Math.random() * 6.5;
-
-      sparkles.push({
-        x: originX,
-        y: originY,
-        vx: Math.cos(angle) * speed,
-        vy: Math.sin(angle) * speed,
-        size: size,
-        color: colors[Math.floor(Math.random() * colors.length)],
-        rotation: Math.random() * Math.PI * 2,
-        vRot: (Math.random() - 0.5) * 0.22,
-        life: 1.0,
-        decay: 0.024 + Math.random() * 0.016, // ~500-700ms duration
-      });
-    }
-
-    if (!rafId) {
-      rafId = requestAnimationFrame(render);
-    }
-  }
-
-  function drawFourPointStar(ctx, x, y, size, rotation, color, alpha) {
-    if (size <= 0.1 || alpha <= 0.01) return;
-
-    ctx.save();
-    ctx.translate(x, y);
-    ctx.rotate(rotation);
-    ctx.fillStyle = color;
-    ctx.globalAlpha = Math.max(0, Math.min(1, alpha));
-
-    // Draw 4-point star curve
-    const s = size;
-    ctx.beginPath();
-    ctx.moveTo(0, -s);
-    ctx.quadraticCurveTo(0, 0, s, 0);
-    ctx.quadraticCurveTo(0, 0, 0, s);
-    ctx.quadraticCurveTo(0, 0, -s, 0);
-    ctx.quadraticCurveTo(0, 0, 0, -s);
-    ctx.closePath();
-    ctx.fill();
-
-    ctx.restore();
-  }
-
-  function render() {
-    ctx.clearRect(0, 0, width, height);
-
-    for (let i = sparkles.length - 1; i >= 0; i--) {
-      const p = sparkles[i];
-
-      p.x += p.vx;
-      p.y += p.vy;
-      p.vx *= 0.94; // atmospheric drag
-      p.vy *= 0.94;
-      p.vy += 0.03; // faint gravity drift
-      p.rotation += p.vRot;
-      p.life -= p.decay;
-
-      if (p.life <= 0) {
-        sparkles.splice(i, 1);
-        continue;
+    sparks = sparks.filter((spark) => {
+      const elapsed = timestamp - spark.startTime;
+      if (elapsed >= duration) {
+        return false;
       }
 
-      // Parabolic twinkle scale: scale up quickly, then shrink
-      const scaleProg = Math.sin(p.life * Math.PI);
-      const currentSize = p.size * (0.3 + 0.7 * scaleProg);
-      const currentAlpha = Math.min(1, p.life * 1.25);
+      const progress = elapsed / duration;
+      const eased = easeFunc(progress);
 
-      drawFourPointStar(ctx, p.x, p.y, currentSize, p.rotation, p.color, currentAlpha);
-    }
+      const distance = eased * sparkRadius * extraScale;
+      const lineLength = sparkSize * (1 - eased);
 
-    if (sparkles.length > 0) {
-      rafId = requestAnimationFrame(render);
+      const x1 = spark.x + distance * Math.cos(spark.angle);
+      const y1 = spark.y + distance * Math.sin(spark.angle);
+      const x2 = spark.x + (distance + lineLength) * Math.cos(spark.angle);
+      const y2 = spark.y + (distance + lineLength) * Math.sin(spark.angle);
+
+      ctx.strokeStyle = sparkColor;
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(x1, y1);
+      ctx.lineTo(x2, y2);
+      ctx.stroke();
+
+      return true;
+    });
+
+    if (sparks.length > 0) {
+      animationId = requestAnimationFrame(draw);
     } else {
-      rafId = null;
-      ctx.clearRect(0, 0, width, height);
+      animationId = null;
+      ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
     }
-  }
-
-  const onPointerDown = (e) => {
-    // Ignore right clicks
-    if (e.button !== 0 && e.button !== undefined) return;
-    spawnSparkles(e.clientX, e.clientY);
   };
 
-  window.addEventListener('pointerdown', onPointerDown, { passive: true });
+  const handleClick = (e) => {
+    // Only trigger on primary left click
+    if (e.button !== 0 && e.button !== undefined) return;
+
+    const x = e.clientX;
+    const y = e.clientY;
+    const now = performance.now();
+
+    const newSparks = Array.from({ length: sparkCount }, (_, i) => ({
+      x,
+      y,
+      angle: (2 * Math.PI * i) / sparkCount,
+      startTime: now,
+    }));
+
+    sparks.push(...newSparks);
+
+    if (!animationId) {
+      animationId = requestAnimationFrame(draw);
+    }
+  };
+
+  window.addEventListener('pointerdown', handleClick, { passive: true });
 
   return () => {
-    window.removeEventListener('resize', onResize);
-    window.removeEventListener('pointerdown', onPointerDown);
-    if (rafId) cancelAnimationFrame(rafId);
+    window.removeEventListener('resize', resizeCanvas);
+    window.removeEventListener('pointerdown', handleClick);
+    if (animationId) cancelAnimationFrame(animationId);
     canvas.remove();
   };
 }
