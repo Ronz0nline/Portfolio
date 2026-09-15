@@ -1,12 +1,24 @@
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { scrollToTarget } from './smoothScroll.js';
 
 gsap.registerPlugin(ScrollTrigger);
 
-/**
- * Scroll Timeline & Metamorphic Trigger System
- */
+// ── Global ScrollTrigger Engine Optimizations ────────────────────────
+ScrollTrigger.config({
+  limitCallbacks: true,      // Disregards intermediate callbacks during high-speed scrubbing
+  ignoreMobileResize: true,  // Eliminates address-bar height twitching on mobile viewports
+  autoRefreshEvents: 'visibilitychange,DOMContentLoaded,load,resize'
+});
 
+ScrollTrigger.defaults({
+  fastScrollEnd: true,       // Force tweens to terminal state on rapid scroll sweeps
+  preventOverlaps: true      // Prevents overlapping tweens from competing
+});
+
+/**
+ * Scroll Timeline & Metamorphic Trigger System (Optimized)
+ */
 export function initScrollTimeline(threeEngine) {
   const sections = document.querySelectorAll('section[data-chapter]');
   const navHeader = document.getElementById('main-nav-header');
@@ -14,8 +26,24 @@ export function initScrollTimeline(threeEngine) {
   const hudChTitle = document.getElementById('hud-chapter-title');
   const dots = document.querySelectorAll('.ch-dot');
   const disciplineCards = document.querySelectorAll('.discipline-interactive-card');
+  const progressBar = document.getElementById('scroll-progress-bar');
 
-  // 1. Initial State: Minimal Navigation is hidden at origin (Chapter 00)
+  // 1. Top Telemetry Scroll Progress Bar (Scrubbed with zero lag)
+  if (progressBar) {
+    gsap.set(progressBar, { scaleX: 0, transformOrigin: 'left center' });
+    gsap.to(progressBar, {
+      scaleX: 1,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: document.body,
+        start: 'top top',
+        end: 'bottom bottom',
+        scrub: 0.15,
+      }
+    });
+  }
+
+  // 2. Navigation Header Visibility (Hidden at Origin, Revealed on Narrative Descent)
   if (navHeader) {
     ScrollTrigger.create({
       trigger: '#ch00',
@@ -27,7 +55,8 @@ export function initScrollTimeline(threeEngine) {
           y: 0,
           pointerEvents: 'auto',
           duration: 0.45,
-          ease: 'power2.out'
+          ease: 'power2.out',
+          overwrite: 'auto'
         });
       },
       onEnterBack: () => {
@@ -36,13 +65,14 @@ export function initScrollTimeline(threeEngine) {
           y: -12,
           pointerEvents: 'none',
           duration: 0.35,
-          ease: 'power2.in'
+          ease: 'power2.in',
+          overwrite: 'auto'
         });
       }
     });
   }
 
-  // 2. Track each chapter section with ScrollTrigger
+  // 3. Track each chapter section with optimized ScrollTriggers
   sections.forEach((section) => {
     const chIdx = parseInt(section.getAttribute('data-chapter'), 10);
     const chTitle = section.getAttribute('data-title') || '';
@@ -51,33 +81,48 @@ export function initScrollTimeline(threeEngine) {
       trigger: section,
       start: 'top 55%',
       end: 'bottom 55%',
-      onEnter: () => activateChapter(chIdx, chTitle),
+      id: `chapter-${chIdx}`,
+      onEnter:     () => activateChapter(chIdx, chTitle),
       onEnterBack: () => activateChapter(chIdx, chTitle)
     });
-
-    // Subtle entrance reveals for section content
-    const animElements = section.querySelectorAll('.reveal-on-scroll');
-    if (animElements.length > 0) {
-      gsap.fromTo(animElements, 
-        { opacity: 0, y: 24 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.7,
-          stagger: 0.12,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: section,
-            start: 'top 70%',
-            toggleActions: 'play none none reverse'
-          }
-        }
-      );
-    }
   });
 
+  // 4. Batch-Optimized Content Entrance Reveals (ScrollTrigger.batch)
+  const reveals = document.querySelectorAll('.reveal-on-scroll');
+  if (reveals.length > 0) {
+    // Initial hidden state with GPU-composited layers
+    gsap.set(reveals, {
+      opacity: 0,
+      y: 26,
+      willChange: 'transform, opacity'
+    });
+
+    ScrollTrigger.batch('.reveal-on-scroll', {
+      interval: 0.08, // Group elements entering within an 80ms slice
+      batchMax: 4,    // Max batch stagger count to keep cadence crisp
+      start: 'top 88%',
+      once: true,     // Reveal once for seamless portfolio scrollytelling
+      onEnter: (batch) => {
+        gsap.to(batch, {
+          opacity: 1,
+          y: 0,
+          duration: 0.75,
+          stagger: 0.09,
+          ease: 'power2.out',
+          overwrite: 'auto',
+          onComplete: () => {
+            // Relieve GPU composition memory once settled
+            batch.forEach((el) => {
+              el.style.willChange = 'auto';
+            });
+          }
+        });
+      }
+    });
+  }
+
   function activateChapter(idx, title) {
-    // Update Chapter HUD
+    // Update Chapter HUD Telemetry
     if (hudChId) {
       hudChId.textContent = idx < 10 ? `0${idx}` : `${idx}`;
     }
@@ -95,13 +140,13 @@ export function initScrollTimeline(threeEngine) {
       }
     });
 
-    // Invoke 3D Metamorphic Sculpture update
+    // Invoke 3D Metamorphic Sculpture Chapter State
     if (threeEngine) {
       threeEngine.setChapter(idx);
     }
   }
 
-  // 3. Discipline Hover Interactions
+  // 5. Discipline Card Interactive Highlights
   disciplineCards.forEach((card) => {
     const id = parseInt(card.getAttribute('data-discipline-id'), 10);
     card.addEventListener('mouseenter', () => {
@@ -118,16 +163,16 @@ export function initScrollTimeline(threeEngine) {
     });
   });
 
-  // 4. Smooth Anchor Link Scrolling
+  // 6. Anchor links routed through smooth scroll controller
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener('click', function (e) {
       const targetId = this.getAttribute('href');
       if (!targetId || targetId === '#') return;
-      const targetElem = document.querySelector(targetId);
-      if (targetElem) {
-        e.preventDefault();
-        targetElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+      e.preventDefault();
+      scrollToTarget(targetId);
     });
   });
+
+  // Recalibrate all trigger measurements
+  ScrollTrigger.refresh();
 }

@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { MetamorphicSculpture } from './sculpture.js';
 import { VectorSpaceVisualizer } from './vectorSpace.js';
+import { onSmoothScroll } from '../ui/smoothScroll.js';
 
 export class ThreeEngine {
   constructor(containerId = 'webgl-canvas-container') {
@@ -9,6 +10,9 @@ export class ThreeEngine {
     this.mouseY = 0;
     this.targetMouseX = 0;
     this.targetMouseY = 0;
+
+    this.scrollVelocity = 0;
+    this.targetScrollVelocity = 0;
 
     this.initScene();
     this.initLights();
@@ -78,6 +82,11 @@ export class ThreeEngine {
       this.targetMouseY = (e.clientY / window.innerHeight - 0.5) * 2;
     }, { passive: true });
 
+    // Subtle 3D camera parallax response to smooth scrolling velocity
+    onSmoothScroll(({ velocity }) => {
+      this.targetScrollVelocity = Math.max(-10, Math.min(10, velocity || 0));
+    });
+
     window.addEventListener('resize', () => {
       const w = this.container.clientWidth || window.innerWidth;
       const h = this.container.clientHeight || window.innerHeight;
@@ -130,11 +139,17 @@ export class ThreeEngine {
     this.mouseX += (this.targetMouseX - this.mouseX) * 0.04;
     this.mouseY += (this.targetMouseY - this.mouseY) * 0.04;
 
+    // Scroll velocity interpolation with smooth decay
+    this.scrollVelocity += (this.targetScrollVelocity - this.scrollVelocity) * 0.08;
+    this.targetScrollVelocity *= 0.90;
+
     const isMobile = window.innerWidth < 768;
     const parallaxIntensity = isMobile ? 0.25 : 0.6;
+    const scrollInertia = isMobile ? 0.015 : 0.03;
 
     this.camera.position.x = this.mouseX * parallaxIntensity;
-    this.camera.position.y = -this.mouseY * parallaxIntensity;
+    this.camera.position.y = -this.mouseY * parallaxIntensity - (this.scrollVelocity * scrollInertia);
+    this.camera.rotation.x = -(this.scrollVelocity * 0.002);
     this.camera.lookAt(0, 0, 0);
 
     // Update subcomponents

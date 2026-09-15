@@ -582,3 +582,51 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   opacity: 0.28;
   mix-blend-mode: screen;
 }
+
+/* ═══════════════════════════════════════════════════════════════════
+   LENIS SMOOTH SCROLL INTEGRATION & OPTIMIZATION
+   ═══════════════════════════════════════════════════════════════════ */
+
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* Top Telemetry Scroll Progress Bar */
+#scroll-progress-bar {
+  box-shadow: 0 0 12px rgba(183, 101, 69, 0.75);
+  will-change: transform;
+}
+
+/* Hardware Compositing for scroll reveals */
+.reveal-on-scroll {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* Decouple hover and spotlight recalculations during rapid scrolling */
+body.is-scrolling * {
+  pointer-events: none !important;
+}
+
+/* Maintain cursor rendering visibility during scroll */
+body.is-scrolling .glow-cursor-root,
+body.is-scrolling #scroll-progress-bar {
+  pointer-events: none !important;
+}

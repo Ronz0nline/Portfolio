@@ -7,6 +7,8 @@
  * - Syncs the mobile chapter HUD from the desktop HUD spans
  */
 
+import { stopScroll, startScroll } from './smoothScroll.js';
+
 export function initMobileMenu() {
   const btn       = document.getElementById('mobile-menu-btn');
   const closeBtn  = document.getElementById('mobile-menu-close');
@@ -48,6 +50,7 @@ export function initMobileMenu() {
 
     // Lock body scroll
     document.body.style.overflow = 'hidden';
+    stopScroll();
 
     // Trap focus: move to close button after transition
     setTimeout(() => closeBtn?.focus(), 310);
@@ -75,6 +78,7 @@ export function initMobileMenu() {
 
     // Restore body scroll
     document.body.style.overflow = '';
+    startScroll();
 
     // Return focus to trigger
     setTimeout(() => {

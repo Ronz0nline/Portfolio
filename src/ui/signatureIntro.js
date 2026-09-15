@@ -24,6 +24,8 @@
  */
 
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { stopScroll, startScroll } from './smoothScroll.js';
 
 // ────────────────────────────────────────────────────────────────────
 // VECTOR DATA: "Rohan Rakshe" in Signature Calligraphy Script
@@ -787,10 +789,16 @@ export class SignatureIntro {
     this.overlay?.remove();
     document.getElementById('sig-particle-canvas')?.remove();
 
+    // Recalibrate GSAP ScrollTrigger after body layout unfreezes
+    requestAnimationFrame(() => {
+      ScrollTrigger.refresh(true);
+    });
+
     this.onDismiss();
   }
 
   _lockScroll() {
+    stopScroll();
     document.documentElement.style.overflow = 'hidden';
     document.body.style.overflow            = 'hidden';
   }
@@ -798,6 +806,7 @@ export class SignatureIntro {
   _unlockScroll() {
     document.documentElement.style.overflow = '';
     document.body.style.overflow            = '';
+    startScroll();
   }
 }
 
